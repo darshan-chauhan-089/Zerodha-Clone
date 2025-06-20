@@ -1,0 +1,19 @@
+import React from 'react';
+
+function Hero() {
+    return ( 
+      <div className='container mb-5 mt-3'>
+        <div className='row text-center'>
+            <div className='hero-img-container d-flex justify-content-center mb-4'>
+                <img className='' src='media/images/homeHero.png' alt='Hero_Image' style={{ width: "80%" }} ></img>
+            </div>
+            <h1 className='mb-3'>Invest in everything</h1>
+            <p className='mb-4'>Online platform to invest in stocks, derivatives, mutual funds, 
+                ETFs, bonds, and more.</p>
+            <button style={{width: "fit-content" , margin: "0 auto"}} className='btn btn-primary pr-4 pl-4 pt-2 pb-2 bg-blue'>Sing up for free</button>
+        </div>
+      </div>  
+    );
+}
+
+export default Hero;

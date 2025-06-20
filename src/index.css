@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.sky-blue{
+  color: #387ed1 !important;
+}
+
+
+
+/* footer styling */
+.footer-description{
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
