@@ -1,0 +1,23 @@
+.holdings-container .total-stats .total-investment-wrapper .total-investment{
+    font-size: 1.3rem !important;
+    font-weight: 500 !important;
+}
+.holdings-container .title-smaller{
+    font-size: 1.1rem !important;
+    font-weight: 400 !important;
+}
+
+.holdings-container th{
+    cursor: pointer;
+}
+.holdings-container .table-data{
+    font-size: 0.85rem;
+}
+
+.holdings-container .total-franctional-part{
+    font-size: 1.05rem !important;
+}
+
+.fa-arrow-up, .fa-arrow-down{
+    font-size: 0.75rem !important;
+}

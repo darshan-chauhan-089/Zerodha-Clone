@@ -1,0 +1,55 @@
+.topbar-right-container .kite-logo{
+    width: 40px;
+    height: 40px;
+}
+
+/* .topbar-right-container .menu-list ul{
+
+} */
+
+.topbar-right-container .spcific-link-container{
+    display: none;
+}
+
+.menu-list-ul .menu-links{
+    color: #444;
+    margin: 0;
+}
+
+.menu-list-ul .active-menu-links{
+    color: var(---orange-color);
+    margin: 0;
+}
+
+.topbar-right-container .menu-list .menu-Link{
+    color: var(---orange-color);
+    text-decoration: none;
+}
+
+.topbar-right-container .profile-link {
+    cursor: pointer;
+    text-decoration: none;
+    color: #444;
+}
+
+.topbar-right-container img {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+
+@media screen and (max-width: 800px){
+    .topbar-right-container .menu-list .menu-list-ul{
+        display: none !important;
+    }
+    
+    .topbar-right-container .spcific-link-container{
+        display: inline-block;
+    }
+    .topbar-right-container .spcific-link-container .menu-Link{
+        
+    }
+
+  }
+
+ 
