@@ -1,4 +1,4 @@
-export const watchlist = [
+export const watchList = [
     {
       name: "INFY",
       price: 1555.45,
@@ -171,7 +171,7 @@ export const watchlist = [
   export const totalInvestment = holdings.reduce((sum, item) => sum + (item.avg * item.qty), 0);
   export const totalCurrentValue = holdings.reduce((sum, item) => sum + (item.price * item.qty), 0)
   export const totalProfitLoss = totalInvestment - totalCurrentValue;
-    
+
   // positions
   export const positions = [
     {

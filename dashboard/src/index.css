@@ -35,6 +35,22 @@ code {
   color: var(--color_444) !important;
 }
 
+/* scrollbar styling */
+::-webkit-scrollbar{
+    width: 12px;
+}
+::-webkit-scrollbar-track{
+    background: rgba(215, 215, 215, 0.6);
+    border-radius: 7px;
+}
+::-webkit-scrollbar-thumb{
+    background: rgba(215, 215, 215, 0.8);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background: rgb(185, 185, 185);
+}
+
 .topbar-left-container{
   min-width: 450px !important; 
 }

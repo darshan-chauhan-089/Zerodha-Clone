@@ -1,3 +1,66 @@
+
 .watch-list-container input{
     border: none;
+}
+
+.watch-list-container ul{
+    height: 80vh;
+    overflow-y: auto;
+
+}
+/* scrollbar editing */
+.watch-list-container ul::-webkit-scrollbar{
+    width: 8px;
+}
+
+
+.watch-list-container ul li{
+    border-bottom: 0.8px solid rgb(235, 234, 234);
+    padding: 10px 10px;
+    position: relative;
+}
+
+.watchlist-item-action{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    background-color: rgba(231, 231, 231, 0.395) !important;
+    /* display: none; */
+}
+
+.watchlist-item-action .action-btn{
+    padding: 1px 12px;
+    /* height: 18px; */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    margin: 0 2.8px;
+}
+
+.watchlist-item-action .action-btn:hover{
+    opacity: 0.8;
+}
+
+.watchlist-item-action .action-buy{
+    background-color: #4184f3;
+}
+.watchlist-item-action .action-sell{
+    background-color: #ff5722;
+}
+.watchlist-item-action .action-analytics {
+    position: relative;
+    top: -1px;
+    align-self: center;
+    padding: 0 4px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+.watchlist-item-action .action-analytics .icon{
+    /* padding: 0px 8px; */
+    color: rgba(0, 0, 0, 0.9);
 }
