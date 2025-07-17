@@ -7,17 +7,11 @@
     font-weight: 400 !important;
 }
 
-.holdings-container th{
-    cursor: pointer;
-}
-.holdings-container .table-data{
-    font-size: 0.85rem;
-}
-
 .holdings-container .total-franctional-part{
     font-size: 1.05rem !important;
 }
 
-.fa-arrow-up, .fa-arrow-down{
-    font-size: 0.75rem !important;
-}
+/* .holdings-container .table-container{
+    height: 60vh !important;
+} */
+

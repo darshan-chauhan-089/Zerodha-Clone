@@ -4,7 +4,7 @@ import TopBarRight from './TopBarRight';
 import './TopBar.css';
 function TopBar() {
     return (   
-        <div className='topbar-container d-flex' style={{height: "60px"}}>
+        <div className='topbar-container d-flex position-sticky top-0 bg-white z-5' style={{height: "60px", width: "100%"}}>
             <TopBarLeft />
             <TopBarRight />
         </div>

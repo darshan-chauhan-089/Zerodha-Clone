@@ -1,3 +1,6 @@
+@import './_table.css';
+@import './_loader.css';
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -36,11 +39,12 @@ code {
 }
 
 /* scrollbar styling */
+
 ::-webkit-scrollbar{
     width: 12px;
 }
 ::-webkit-scrollbar-track{
-    background: rgba(215, 215, 215, 0.6);
+    background: rgba(215, 215, 215, 0.2);
     border-radius: 7px;
 }
 ::-webkit-scrollbar-thumb{
@@ -58,9 +62,23 @@ code {
   width: 450px !important; 
 }
 
+/* .dashboard-container{
+  min-height: calc(100vh - 60px);
+} */
 .dashboard-container .content{
   min-width: calc(100% - 450px);
+  /* height: 40vh !important; */
 }
+
+/* Table styling */
+
+.table-container::-webkit-scrollbar{
+    display: none;
+}
+
+
+
+/* ------------------------- */
 
 @media screen and (max-width: 1250px){
   .topbar-left-container{

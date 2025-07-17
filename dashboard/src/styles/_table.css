@@ -1,0 +1,13 @@
+th{
+    cursor: pointer;
+    font-size: 1.1rem !important;
+    font-weight: 400 !important;
+}
+
+.table-data{
+    font-size: 0.85rem;
+}
+
+.fa-arrow-up, .fa-arrow-down{
+    font-size: 0.75rem !important;
+}

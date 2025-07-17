@@ -18,7 +18,8 @@ function TopBarRight() {
     const menuClass = 'menu-links';
     const activeMenuClass = 'active-menu-links';
     return ( 
-        <div className='topbar-right-container d-flex justify-content-between align-items-center w-100 ps-3 pe-5 border-bottom' style={{width: ""}}>
+        <div className='topbar-right-container d-flex justify-content-between align-items-center w-100 ps-3 pe-5 border-bottom
+        bg-white'>
             <div className='logo'>
                 <Link to='/'>
                     <img className='kite-logo align-self-center' src='/media/kite-logo.svg' style={{width: '63px', height: '18px'}}></img>

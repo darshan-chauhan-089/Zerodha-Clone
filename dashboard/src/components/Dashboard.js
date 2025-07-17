@@ -12,7 +12,7 @@ function Dashboard() {
     return ( 
         <div className='dashboard-container d-flex'>
             <WatchList />
-            <div className='content p-4 '>
+            <div className='content p-4'>
                 <Routes>
                     <Route path='/' element={<Summary />} />
                     <Route path='/orders' element={<Orders />} />

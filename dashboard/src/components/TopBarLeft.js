@@ -1,8 +1,8 @@
 import React from 'react';
 function TopBarLeft() {
     return ( 
-        <div className='topbar-left-container pinned-intruments border-end
-        d-flex justify-content-evenly py-1 px-3'
+        <div className='topbar-left-container pinned-intruments border border-top-start-0
+        d-flex justify-content-evenly py-1 px-3 bg-white'
         >
             <div className='intrument-widget'>
                 <p className='pinned-funds-name mb-0 color_444 font_size_85'>NIFTY 50</p>

@@ -4,10 +4,10 @@ import Dashboard from './Dashboard';
 
 function Home() {
     return ( 
-        <>
+        <div className='position-relative'>
             <TopBar />
             <Dashboard />
-        </>
+        </div>
      );
 }
 
