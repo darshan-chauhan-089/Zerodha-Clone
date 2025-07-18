@@ -15,10 +15,12 @@ function Holdings() {
     const [sortConfig, setSortConfing] = useState({key: null, direction: null});
 
     useEffect(() => {
-        axios.get("http://localhost:8080/holdings").then((res) => {
+        setTimeout(() => {
+            axios.get("http://localhost:8080/holdings").then((res) => {
             holdings.current = res.data;
             setTData(res.data);
         });
+        }, 500);
     }, []);
 
     // headnames

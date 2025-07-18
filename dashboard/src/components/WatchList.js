@@ -20,20 +20,21 @@ function WatchList() {
     const [wData, setWData] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:8080/watchlists").then((res)=> {
-            watchlists.current = res.data;
-            console.log(watchlists.current);
-            setWData(res.data);
-        });
+        setTimeout(() => {
+            axios.get("http://localhost:8080/watchlists").then((res)=> {
+                watchlists.current = res.data;
+                // console.log(watchlists.current);
+                setWData(res.data);
+            });
+        }, 500);
     }, []); 
     
     return ( 
-        <div className='watch-list-container d-inline border-end p-3' >
+        <div className='watch-list-container d-inline border-end p-3 position-relative'  >
             <div className='border-bottom pb-2 mb-4'>
                 <form className="d-flex" role="search">
-                    <input id="search-input" class="form-control me-2" type="search" placeholder="Search (infy, ongc, ics)" aria-label="Search"
+                    <input id="search-input" className="form-control me-2" type="search" placeholder="Search (infy, ongc, ics)" aria-label="Search"
                     onChange={(event) => search(event, watchlists.current, setWData)}/>
-                    {console.log(wData)}
                 </form>
             </div>
             {

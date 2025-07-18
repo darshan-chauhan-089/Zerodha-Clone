@@ -380,3 +380,176 @@ export const holdings = [
   }
 ];
 
+export const orders = [
+  {
+    time: "09:22:10",
+    name: "TATASTEEL",
+    product: "CNC",
+    type: "Buy",
+    qty: 10,
+    price: 128.45,
+    status: "open",
+    avg: 0
+  },
+  {
+    time: "09:25:33",
+    name: "INFY",
+    product: "MIS",
+    type: "Sell",
+    qty: 12,
+    price: 1525.60,
+    status: "open",
+    avg: 0
+  },
+  {
+    time: "09:28:47",
+    name: "HDFC",
+    product: "CNC",
+    type: "Buy",
+    qty: 8,
+    price: 2780.90,
+    status: "open",
+    avg: 0
+  },
+  {
+    time: "09:32:15",
+    name: "ITC",
+    product: "MIS",
+    type: "Sell",
+    qty: 15,
+    price: 456.30,
+    status: "open",
+    avg: 0
+  },
+  {
+    time: "09:34:58",
+    name: "SBIN",
+    product: "CNC",
+    type: "Buy",
+    qty: 20,
+    price: 780.55,
+    status: "open",
+    avg: 0
+  },
+  {
+    time: "09:15:03",
+    name: "TCS",
+    product: "CNC",
+    type: "Buy",
+    qty: 10,
+    price: 3725.50,
+    status: "complete",
+    avg: 3725.50
+  },
+  {
+    time: "09:20:44",
+    name: "HDFCBANK",
+    product: "MIS",
+    type: "Sell",
+    qty: 15,
+    price: 1682.30,
+    status: "complete",
+    avg: 1682.30
+  },
+  {
+    time: "09:22:11",
+    name: "SBIN",
+    product: "CNC",
+    type: "Buy",
+    qty: 25,
+    price: 598.40,
+    status: "complete",
+    avg: 598.40
+  },
+  {
+    time: "09:26:05",
+    name: "ITC",
+    product: "CNC",
+    type: "Buy",
+    qty: 50,
+    price: 439.90,
+    status: "complete",
+    avg: 439.90
+  },
+  {
+    time: "09:30:30",
+    name: "BAJAJFINSV",
+    product: "MIS",
+    type: "Sell",
+    qty: 8,
+    price: 16150.00,
+    status: "complete",
+    avg: 16150.00
+  },
+  {
+    time: "09:32:42",
+    name: "MARUTI",
+    product: "CNC",
+    type: "Buy",
+    qty: 3,
+    price: 11200.50,
+    status: "complete",
+    avg: 11200.50
+  },
+  {
+    time: "09:36:09",
+    name: "TITAN",
+    product: "MIS",
+    type: "Buy",
+    qty: 6,
+    price: 3450.10,
+    status: "complete",
+    avg: 3450.10
+  },
+  {
+    time: "09:17:15",
+    name: "INFY",
+    product: "MIS",
+    type: "Sell",
+    qty: 20,
+    price: 1545.20,
+    status: "open",
+    avg: 0
+  },
+  {
+    time: "09:18:10",
+    name: "RELIANCE",
+    product: "CNC",
+    type: "Buy",
+    qty: 5,
+    price: 2430.75,
+    status: "cancelled",
+    avg: 0
+  },
+  {
+    time: "09:23:50",
+    name: "WIPRO",
+    product: "MIS",
+    type: "Sell",
+    qty: 30,
+    price: 475.10,
+    status: "rejected",
+    avg: 0
+  },
+  {
+    time: "09:28:15",
+    name: "AXISBANK",
+    product: "MIS",
+    type: "Buy",
+    qty: 12,
+    price: 1045.60,
+    status: "open",
+    avg: 0
+  },
+  {
+    time: "09:34:55",
+    name: "HCLTECH",
+    product: "CNC",
+    type: "Sell",
+    qty: 18,
+    price: 1388.75,
+    status: "cancelled",
+    avg: 0
+  }
+];
+

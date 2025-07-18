@@ -15,15 +15,27 @@ function Positions() {
     const [sortConfig, setSortConfing] = useState({key: null, direction: null});
 
     useEffect(() => {
-        axios.get("http://localhost:8080/positions").then((res) => {
+        setTimeout(() => {
+            axios.get("http://localhost:8080/positions").then((res) => {
             positions.current = res.data;
             setTData(res.data);
-        });
+            });
+        }, 500);
     }, []);
 
     // headnames    
     let headNames = ["Product", "name", "Qty.", "Avg", "LTP", "P&L", "Chg."];
     let keyNames = ["product", "name", "qty", "avg", "ltp", "pnl", "chg"];
+
+    // getProductStyle
+    const getProductStyle = (product) => {
+        const refObj = {
+            CNC: "bg-danger-subtle text-danger",
+            MIS: "bg-body-secondary text-secondary",
+            NRML: "bg-light-subtle text-dark"
+        }
+        return refObj[product];
+    }
     
 
     return ( 
@@ -57,7 +69,11 @@ function Positions() {
                             { 
                                 tdata.map((item, index) => {
                                     return( <tr key={index}>
-                                        <td className='table-data'>{item.product}</td>
+                                        <td className={`table-data`}>
+                                            <span className={`px-3 py-1 rounded-1 ${getProductStyle(item.product)}`}>
+                                                {item.product}
+                                            </span>
+                                        </td>
                                         <td className='table-data'>{item.name}</td>
                                         <td className='table-data align-self-end'>{item.qty}</td>
                                         <td className='table-data align-self-end'>{item.avg.toFixed(2)}</td>
