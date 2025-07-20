@@ -4,7 +4,7 @@ const app = express();
 
 // dotenv setup
 require('dotenv').config();
-// const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
 const uri = process.env.MONGODB_ATLAS_URL ;
 
 // Models
@@ -20,42 +20,38 @@ const cors = require('cors');
 //mongoose connection
 const mongoose = require("mongoose");
 
-
-main().then(() => {
-    console.log("Connected to db. ");
-}).catch((err) => {
-    console.log(err);
-});
-
-async function main() {
-    await mongoose.connect(uri);
-}
+mongoose.connect(uri, {
+    useNewUrlParser: true, 
+    useUnifiedTopology: true,  
+})
+.then((res) => console.log("MongoDB is connected successfully."))
+.catch((err) => console.error(err));
 
 //require data
 const {holdings, watchList, positions, orders} = require('../dashboard/src/data/data');
 const initData = async ()  => {
-    await OrdersModel.deleteMany({});
-    orders.forEach((item) => {
-        let newOrder = new OrdersModel({
-            time : item.time,
+    // await OrdersModel.deleteMany({});
+    // orders.forEach((item) => {
+    //     let newOrder = new OrdersModel({
+    //         time : item.time,
 
-            name : item.name,
+    //         name : item.name,
 
-            product : item.product,
+    //         product : item.product,
 
-            type : item.type,
+    //         type : item.type,
 
-            qty : item.qty,
+    //         qty : item.qty,
             
-            price: item.price,
+    //         price: item.price,
 
-            status: item.status,
+    //         status: item.status,
 
-            avg: item.avg,
-        });
-        newOrder.save();
-    });
-    console.log(await OrdersModel.find({}));
+    //         avg: item.avg,
+    //     });
+    //     newOrder.save();
+    // });
+    // console.log(await OrdersModel.find({}));
     // await PositionsModel.deleteMany({});
     // positions.forEach((item) => {
     //     let newPosition = new PositionsModel({
@@ -137,10 +133,11 @@ app.get('/orders', async (req, res) => {
 });
 
 app.get("/" , (req, res) => {
-    initData();
+    // initData();
     res.send("complete!");
+    res.cookie("cookie 1" , "i am cookie");
 });
 
-app.listen(8080, () => {
+app.listen(PORT, () => {
     console.log("Server is listings on port 8080. ");
 });
