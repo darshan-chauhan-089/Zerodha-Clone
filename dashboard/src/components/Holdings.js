@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
+import { useOutletContext  } from 'react-router-dom';
 import { totalInvestment, totalCurrentValue, totalProfitLoss } from '../data/data';
 import "./Holdings.css";
 import TableHead from './TableHead';
@@ -6,22 +7,25 @@ import Loader from './Loader';
 import axios from 'axios';
 import {getStockUpDown, search} from '../utilsFunc/utils';
 
-function Holdings() {
 
-    const holdings = useRef([]);
-    const [tdata, setTData] = useState([]);
+
+function Holdings({holdings, totalInvestment, totalCurrentValue, totalProfitLoss, dayTotalPL}) {
+
+    console.log("holdings: ", holdings);
+    
+    const [tdata, setTData] = useState(holdings);
 
     // sorting 
     const [sortConfig, setSortConfing] = useState({key: null, direction: null});
 
-    useEffect(() => {
-        setTimeout(() => {
-            axios.get("http://localhost:8080/holdings").then((res) => {
-            holdings.current = res.data;
-            setTData(res.data);
-        });
-        }, 500);
-    }, []);
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         axios.get("http://localhost:8080/holdings").then((res) => {
+    //         holdings = res.data;
+    //         setTData(res.data);
+    //     });
+    //     }, 500);
+    // }, []);
 
     // headnames
     let headNames = ["Instruments", "Qty.", "Avg.cost", "LTP", "Cur. val", "P&L", "Net chg.", "Day chg."];
@@ -29,18 +33,18 @@ function Holdings() {
     
 
     // Calculate the total data
-    const totalInvestment = holdings.current.reduce((sum, item) => sum + (item.avg * item.qty), 0);
-    const totalCurrentValue = holdings.current.reduce((sum, item) => sum + (item.currVal), 0);
-    const totalProfitLoss = totalInvestment - totalCurrentValue;
-    const dayTotalPL = holdings.current.reduce((res, item) => res + ((item.price - item.dayOpenPrice) * item.qty), 0);
+    // const totalInvestment = holdings.reduce((sum, item) => sum + (item.avg * item.qty), 0);
+    // const totalCurrentValue = holdings.reduce((sum, item) => sum + (item.currVal), 0);
+    // const totalProfitLoss = totalInvestment - totalCurrentValue;
+    // const dayTotalPL = holdings.reduce((res, item) => res + ((item.price - item.dayOpenPrice) * item.qty), 0);
 
     return ( 
         <div className='holdings-container'>
             <div className='header d-flex justify-content-between border-bottom pb-4 pe-0 pe-sm-4'>
-                <h2 className='fs-3 fs-md-4 fw-light mb-0 me-3 align-self-center'>Holdings ({holdings.current.length})</h2>
+                <h2 className='fs-3 fs-md-4 fw-light mb-0 me-3 align-self-center'>Holdings ({holdings.length})</h2>
                 <form class="d-flex" role="search">
                     <input id="search-input" class="form-control me-2" type="search" placeholder="Filter eg:TCS" aria-label="Search"
-                    onChange={(event) => search(event, holdings.current, setTData)}/>   
+                    onChange={(event) => search(event, holdings, setTData)}/>   
                 </form>
             </div>
             <div className='total-stats d-flex flex-wrap justify-content-between py-4 pt-4 pb-3 px-2 border-bottom'>

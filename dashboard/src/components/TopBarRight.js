@@ -63,11 +63,11 @@ function TopBarRight() {
                             <p className= { selectedMenu === 4 ? activeMenuClass : menuClass }>Funds</p>
                         </Link>
                     </li>
-                    <li className='px-3'>
+                    {/* <li className='px-3'>
                         <Link to='/apps' className='menu-Link' onClick={ () => handleMenuClick(5) }>
                             <p className= { selectedMenu === 5 ? activeMenuClass : menuClass }>Apps</p>
                         </Link>
-                    </li>
+                    </li> */}
                 </ul>
                 <div className='profile-link d-flex align-self-center ms-auto' onClick={handleProfileClick}>
                     <img className='mx-2' src='/media/userprofile_photo.png'></img>

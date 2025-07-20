@@ -38,6 +38,10 @@ code {
   color: var(--color_444) !important;
 }
 
+.font-size-85{
+  font-size: var(--font_size_85);
+}
+
 /* scrollbar styling */
 
 ::-webkit-scrollbar{

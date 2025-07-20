@@ -1,0 +1,34 @@
+.buy-action-window{
+    z-index: 1;
+    width: 250px;
+    position: fixed;
+    left: 475px;
+    transform-origin: 0 50%;
+    animation: pop 300ms ease-in-out;
+
+    background: rgba(13, 110, 253, 0.04);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(11.8px);
+    -webkit-backdrop-filter: blur(11.8px);
+}
+
+.blue-blur{
+    background-color: #0d6dfdc0;
+    backdrop-filter: blur(11.8px);
+}
+
+.buy-action-window .buy:hover{
+    background-color: #0066ff;
+}
+
+@keyframes pop {
+    0%{
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}

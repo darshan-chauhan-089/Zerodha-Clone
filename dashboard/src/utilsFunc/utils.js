@@ -31,3 +31,11 @@ export const handleSort = (columnKey, sortConfig, setSortConfing, data, setData)
     setData(sortedData);
     setSortConfing({key: columnKey , direction});
 }
+
+export const formatCompactNumber = (number) => {
+    const formatter = new Intl.NumberFormat('en-US', {
+        notation: "compact", // Use compact notation (e.g., K, M, B)
+        compactDisplay: "short" // Use short abbreviations (e.g., K, not thousands)
+    });
+    return formatter.format(number);
+}

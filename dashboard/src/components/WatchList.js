@@ -1,4 +1,4 @@
-import React ,{useState, useEffect, useRef} from 'react';
+import React ,{useState, useEffect, useRef, useContext} from 'react';
 // import { watchList } from '../data/data';
 import './WatchList.css';
 import { getStockUpDown, search } from '../utilsFunc/utils';
@@ -11,9 +11,24 @@ import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined';
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import Loader from './Loader';
 import axios from 'axios';
+import BuyActionWindow from './BuyActionWindow';
+import GeneralContext from './GeneralContext';
 // import {Button} from '@mui/material';
 
 // import {KeyboardArrowUpIcon, KeyboardArrowDownIcon} from '@mui/icons-material';
+
+const getTopOffset = (index) => {
+    const items = document.querySelectorAll('.watch-list-container li');
+    const item = items[index];
+
+    // const rect = item.getBoundingClientRect();
+    // let top = rect.top + window.scrollY;
+    console.log(index);
+    console.log(items);
+    console.log(item);
+    return 1;
+}
+
 function WatchList() {
 
     const watchlists = useRef([]);
@@ -28,6 +43,8 @@ function WatchList() {
             });
         }, 500);
     }, []); 
+
+    
     
     return ( 
         <div className='watch-list-container d-inline border-end p-3 position-relative'  >
@@ -57,14 +74,14 @@ function WatchList() {
                         })
                     }
                 </ul>
-
             }
+            {/* <BuyActionWindow></BuyActionWindow> */}
         </div>
         
     );
 }
 
-const WatchListItem = ({item, index}) => {
+const WatchListItem = ({item}) => {
 
     const [showWatchListActions, setshowWatchListActions] = useState(false);
 
@@ -74,6 +91,7 @@ const WatchListItem = ({item, index}) => {
     const handleMouseLeave = () => {
         setshowWatchListActions(false);
     }
+    
 
     return (
         <li className='border-bottom' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}> {/*position: relative; */}
@@ -95,18 +113,31 @@ const WatchListItem = ({item, index}) => {
                         {item.price}
                     </p>
                 </div>
-                {showWatchListActions && <WatchListItemAction uid={item.name}/>}
+                {showWatchListActions && <WatchListItemAction uid={item.name} />}
             </div>
         </li>
     );
 }
 
 const WatchListItemAction = (({uid}) => {
+    const generalContext = useContext(GeneralContext);
+
+    const handleBuyClick = (e) => {
+        const rect = e.target.getBoundingClientRect();
+
+        let topOffset = rect.bottom - 50;
+        if(topOffset > 365){
+            topOffset = 365;
+        }
+        
+        generalContext.openBuyWindow(uid, topOffset);
+    }
     return (
         <span className='watchlist-item-action m-0 pe-3' uid={uid}>
             <span className=''>
                 <Tooltip title="Buy" placement="top" arrow >
-                    <button className='action-btn action-buy'>B</button>
+                    <button className='action-btn action-buy'
+                    onClick={handleBuyClick}>B</button>
                 </Tooltip>
                 <Tooltip title="Sell" placement="top" arrow >
                     <button className='action-btn action-sell'>S</button>
