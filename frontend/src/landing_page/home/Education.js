@@ -1,4 +1,4 @@
-import React from 'react';
+import {Link} from 'react-router-dom';
 
 function Education() {
     return ( 
@@ -15,19 +15,19 @@ function Education() {
                         Varsity, the largest online stock market education book in the world covering 
                         everything from the basics to advanced trading.
                     </p>
-                    <a className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0
-                        link-underline-opacity-75-hover mb-3" href="#">
+                    <Link className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0
+                        link-underline-opacity-75-hover mb-3" to={'/'}>
                             Versity
                             <i class="fa fa-long-arrow-right m-1" style={{position: "relative", top: "2px", color: "0d6efd", opacity: "0.6"}}></i>
-                    </a>
+                    </Link>
                     <p className='info-detail lh-base text-muted'>
                     TradingQ&A, the most active trading and investment community in India for all your market related queries.
                     </p>
-                    <a className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0
-                        link-underline-opacity-75-hover" href="#">
+                    <Link className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0
+                        link-underline-opacity-75-hover" to={'https://tradingqna.com/'}>
                             TredingQ&A
                             <i class="fa fa-long-arrow-right m-1" style={{position: "relative", top: "2px", color: "0d6efd", opacity: "0.6"}}></i>
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>

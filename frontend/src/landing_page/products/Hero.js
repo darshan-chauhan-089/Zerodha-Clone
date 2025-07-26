@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 function Hero(){
     return(
         <div className='container mt-5 mb-5 py-5 border-bottom'>
@@ -7,10 +8,10 @@ function Hero(){
                     Sleek, modern, and intuitive trading platforms
                 </h5>
                 <h6 className="text-muted fs-6">Check out our
-                <a className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0
-                        link-underline-opacity-75-hover" href="#">  investment offerings
+                <Link className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0
+                        link-underline-opacity-75-hover" to={'/products'}>  investment offerings
                                 <i class="fa fa-long-arrow-right m-1" style={{position: "relative", top: "2px", color: "0d6efd", opacity: "0.6"}}></i>
-                        </a>
+                </Link>
                 </h6>
             </div>
         </div>  

@@ -1,6 +1,8 @@
-import React from 'react';
+import {Link} from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 function Footer() {
+    const {user} = useAuth();
     return ( 
         <div className='container py-5 border-top '>
             <div className='row'>
@@ -8,51 +10,30 @@ function Footer() {
                 <div className='col-0 col-sm-1'></div>
                 <div className='col-sm-12 col-md-3 mb-4'>
                     <img className='mb-3' style={{width: "8rem" , position: "relative" , top: "-2px"}} src='media/images/logo.svg'></img>
-                    <p className='text-muted'>
+                    <p className='text-muted border-bottom pb-3'>
                     © 2010 - 2025, Zerodha Broking Ltd.<br />All rights reserved.
                     </p>
-                    <ul className='social-media-link-wrapper list-unstyled d-flex mt-2 border-bottom pb-3'>
-
+                    <ul className='social-media-link-wrapper list-unstyled d-flex mt-2 pb-3'>
+                        {/* Upadate above links with your social media accounts.*/ }
                         <li className='pe-2'>
-                            <a href="https://twitter.com/zerodhaonline" >
+                            <Link to="https://linkedin.com/company/zerodha">
+                            <i className="fa-brands fa-linkedin-in fs-5 text-black text-muted"></i>
+                            </Link>
+                        </li>
+                        <li className='px-2'>
+                            <Link to="https://facebook.com/zerodha.social" >
+                                <i className="fa-brands fa-github fs-5 text-black text-muted"></i>
+                            </Link>
+                        </li>
+                        <li className='px-2'>
+                            <Link to="https://twitter.com/zerodhaonline" >
                                 <i className="fa-brands fa-twitter fs-5 text-black text-muted"></i>
-                            </a>
+                            </Link>
                         </li>
                         <li className='px-2'>
-                            <a href="https://facebook.com/zerodha.social" >
-                                <i className="fa-brands fa-facebook fs-5 text-black text-muted"></i>
-                            </a>
-                        </li>
-                        <li className='px-2'>
-                            <a href="https://instagram.com/zerodhaonline/" >
+                            <Link to="https://instagram.com/zerodhaonline/" >
                                 <i className="fa-brands fa-instagram fs-5 text-black text-muted"></i>
-                            </a>
-                        </li>
-                        <li className='px-2'>
-                            <a href="https://linkedin.com/company/zerodha">
-                            <i class="fa-brands fa-linkedin-in fs-5 text-black text-muted"></i>
-                            </a>
-                        </li>
-
-                    
-
-                    </ul>
-                    <ul className='social-media-link-wrapper list-unstyled d-flex mt-2'>
-
-                        <li className='pe-2'>
-                            <a href="https://twitter.com/zerodhaonline" >
-                                <i className="fa-brands fa-youtube fs-5 text-black text-muted"></i>
-                            </a>
-                        </li>
-                        <li className='px-2'>
-                            <a href="https://facebook.com/zerodha.social" >
-                                <i className="fa-brands fa-whatsapp fs-5 text-black text-muted"></i>
-                            </a>
-                        </li>
-                        <li className='px-2'>
-                            <a href="https://instagram.com/zerodhaonline/" >
-                                <i className="fa-brands fa-telegram fs-5 text-black text-muted"></i>
-                            </a>
+                            </Link>
                         </li>
 
                     </ul>
@@ -63,45 +44,49 @@ function Footer() {
                 <div className='col-sm-6 col-md-2 mb-3'>
                     <ul className='list-unstyled'>
                         <li className='fs-5 h6 mb-1'>Account</li>
+                        {
+                            user ? "" : 
+                            <li className='py-2'>
+                                <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
+                                    Open demant account
+                                </Link>
+                            </li>
+                        }
+
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
-                                Open demant account
-                            </a>
-                        </li>
-                        <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 Minor demant account
-                            </a>
+                            </Link>
                         </li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 NRI demant account
-                            </a>
+                            </Link>
                         </li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 Commodity
-                            </a>
+                            </Link>
                         </li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 Dematerialization
-                            </a>
+                            </Link>
                         </li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 Fund transfer
-                            </a>
+                            </Link>
                         </li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 MTF
-                            </a>
+                            </Link>
                         </li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 Referral program
-                            </a>
+                            </Link>
                         </li>
                         
                     </ul>
@@ -112,44 +97,44 @@ function Footer() {
                     <ul className='list-unstyled'>
                         <li className='fs-5 h6 mb-1'>Support</li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 Contanct us
-                            </a>
+                            </Link>
                         </li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 Support portal
-                            </a>
+                            </Link>
                         </li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 How to file a cmplaint?
-                            </a>
+                            </Link>
                         </li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 Status your complaints
-                            </a>
+                            </Link>
                         </li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 Bulletain
-                            </a>
+                            </Link>
                         </li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 Circular 
-                            </a>
+                            </Link>
                         </li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 Z-Connect blog
-                            </a>
+                            </Link>
                         </li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 Downloads
-                            </a>
+                            </Link>
                         </li>
                         
                     </ul>
@@ -159,39 +144,39 @@ function Footer() {
                     <ul className='list-unstyled'>
                         <li className='fs-5 h6 mb-1'>Company</li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 About
-                            </a>
+                            </Link>
                         </li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 Philosophy
-                            </a>
+                            </Link>
                         </li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 Press & media
-                            </a>
+                            </Link>
                         </li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 careers
-                            </a>
+                            </Link>
                         </li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 Zerodha Cares(CSR)
-                            </a>
+                            </Link>
                         </li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 Zerodha.tech    
-                            </a>
+                            </Link>
                         </li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 Open source
-                            </a>
+                            </Link>
                         </li>
                         
                     </ul>
@@ -201,39 +186,39 @@ function Footer() {
                     <ul className='list-unstyled'>
                         <li className='fs-5 h6 mb-1'>Quick links</li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 Upcoming IPOs
-                            </a>
+                            </Link>
                         </li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 Brokerage charges
-                            </a>
+                            </Link>
                         </li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 Market holidays
-                            </a>
+                            </Link>
                         </li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 Economic calender 
-                            </a>
+                            </Link>
                         </li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 Calculators
-                            </a>
+                            </Link>
                         </li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 Markets
-                            </a>
+                            </Link>
                         </li>
                         <li className='py-2'>
-                            <a className='link-underline text-dark fw-normal link-underline-opacity-0' href='#'>
+                            <Link className='link-underline text-dark fw-normal link-underline-opacity-0'>
                                 Sectors
-                            </a>
+                            </Link>
                         </li>
 
                     </ul>
@@ -286,49 +271,49 @@ function Footer() {
 
                     <ul className='list-unstyled list-inline text-center'>
                         <li className='hover-blue-change list-inline-item'>
-                            <a href="https://nseindia.co "
+                            <Link to="https://nseindia.com"
                              className='link-underline text-dark fw-normal link-underline-opacity-0 text-muted fs-10 pe-2 hover-blue-change mb-2'>
-                            NSE</a>
+                            NSE</Link>
                         </li>
                         <li className='mb-2 list-inline-item'>
-                            <a href="https://nseindia.com"
+                            <Link to="https://nseindia.com"
                              className='link-underline text-dark fw-normal link-underline-opacity-0 text-muted fs-10 px-3 mb-2'>
-                            BSE</a>
+                            BSE</Link>
                         </li>
                         <li className='mb-2 list-inline-item'>
-                            <a href="https://www.mcxindia.com/"
+                            <Link to="https://www.mcxindia.com/"
                              className='link-underline text-dark fw-normal link-underline-opacity-0 text-muted fs-10 px-3 mb-2'>
-                            MCX</a>
+                            MCX</Link>
                         </li>
                         <li className='mb-2 list-inline-item'>
-                            <a href="https://zerodha.com/terms-and-conditions/"
+                            <Link
                              className='link-underline text-dark fw-normal link-underline-opacity-0 text-muted fs-10 px-3 mb-2'>
-                            Terms & Conditions</a>
+                            Terms & Conditions</Link>
                         </li>
                         <li className='mb-2 list-inline-item'>
-                            <a href="https://zerodha.com/policies-and-procedures/"
+                            <Link
                              className='link-underline text-dark fw-normal link-underline-opacity-0 text-muted fs-10 px-3 mb-2'>
-                            Policies & procedures</a>
+                            Policies & procedures</Link>
                         </li>
                         <li className='mb-2 list-inline-item'>
-                            <a href="https://zerodha.com/privacy-policy/"
+                            <Link
                              className='link-underline text-dark fw-normal link-underline-opacity-0 text-muted fs-10 px-3 mb-2'>
-                            Privacy & policy</a>
+                            Privacy & policy</Link>
                         </li>
                         <li className='mb-2 list-inline-item'>
-                            <a href="https://zerodha.com/disclosure/"
+                            <Link
                              className='link-underline text-dark fw-normal link-underline-opacity-0 text-muted fs-10 px-3 mb-2'>
-                            Disclosure</a>
+                            Disclosure</Link>
                         </li>
                         <li className='mb-2 list-inline-item'>
-                            <a href="https://zerodha.com/investor-attention/"
+                            <Link
                              className='link-underline text-dark fw-normal link-underline-opacity-0 text-muted fs-10 px-3 mb-2'>
-                            For investor's attention</a>
+                            For investor's attention</Link>
                         </li>
                         <li className='mb-2 list-inline-item'>
-                            <a href="https://zerodha.com/disclosure/"
+                            <Link
                              className='link-underline text-dark fw-normal link-underline-opacity-0 text-muted fs-10 px-3 mb-2'>
-                            Investor charter</a>
+                            Investor charter</Link>
                         </li>
                     </ul>
                 </div>

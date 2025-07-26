@@ -1,5 +1,4 @@
-import React from 'react';
-
+import {Link} from 'react-router-dom';
 function State() {
     return ( 
         <div className='container mt-5 mb-5 py-4'>
@@ -39,21 +38,22 @@ function State() {
                     </div>
                 </div>
                 <div className='col-12 col-lg-6 p-3 d-flex flex-column justify-content-evenly'>
-                    <img src='media/images/ecosystem.png'
-                    style={{ width: "90%", margin:"0 auto"}}
-                    className='align-self-center object-fit-contain'></img>
+                    <Link to={'/products'}>
+                        <img src='media/images/ecosystem.png'
+                        style={{ width: "90%", margin:"0 auto"}}
+                        className='align-self-center object-fit-contain'></img>
+                    </Link>
                     <div className='btn-wrapper d-flex justify-content-evenly'>
-                        <a className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0
-                        link-underline-opacity-75-hover" href="#">
+                        <Link className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0
+                        link-underline-opacity-75-hover" to={'/products'}>
                             Explore our products 
                                 <i class="fa fa-long-arrow-right m-1" style={{position: "relative", top: "2px", opacity: "0.6"}}></i>
-                                {/* <i class="fa-thin fa-arrow-right m-1" style={{position: "relative", top: "2px"}}></i> */}
-                        </a>
-                        <a className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0
-                        link-underline-opacity-75-hover" href="#">
+                        </Link>
+                        <Link className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0
+                        link-underline-opacity-75-hover" to={'http://localhost:3001'}>
                             Try Kite demo
-                                <i class="fa fa-long-arrow-right m-1" style={{position: "relative", top: "2px", color: "0d6efd", opacity: "0.6"}}></i>
-                        </a>
+                                <i class="fa fa-long-arrow-right m-1" style={{position: "relative", top: "2px", opacity: "0.6"}}></i>
+                        </Link>
                     </div>
                 </div>
             </div>

@@ -1,37 +1,36 @@
-import React , {useState} from 'react';
+import React, { useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
-import { getCookie } from '../../utils/utils';
 import { useAuth } from '../../context/AuthContext';
+import { getCookie } from '../../utils/utils';
 
-
-function Signup(){
+function Login() {
     const {login} = useAuth();
     const navigate = useNavigate();
     const [inputVal, setInputVal] = useState({
         email: "",
-        username: "",
-        password: "",
+        password: ""
     });
 
-    const {email, username, password} = inputVal;
+    const {email, password} = inputVal;
 
     const handleOnChange = (e) => {
-        const {name , value} = e.target;
+        const {name, value} = e.target;
         setInputVal({
             ...inputVal, 
-            [name] : value,
+            [name] : value
         });
     };
 
-    const handleError = (err) => {
-        toast.error(err, {
+    const handleSuccess = (msg) => {
+        toast.success(msg , {
             position: "top-right"
         });
     }
-    const handleSuccess = (msg) => {
-        toast.success(msg, {
+
+    const handleError = (err) => {
+        toast.error(err , {
             position: "top-right"
         });
     }
@@ -39,34 +38,35 @@ function Signup(){
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            const { data } = await axios.post(
-                "http://localhost:8080/signup",
+            const {data} = await axios.post(
+                "http://localhost:8080/login",
                 {
                     ...inputVal
                 },
                 { withCredentials: true }
             );
 
-            const { success, message } = data;
+            const {message, success, username} = data;
             if(success){
-                login(getCookie('token'), {username: username});
-                handleSuccess(message);
+                login(getCookie('token'), {username : username} );
                 setTimeout(() => {
-                    navigate("/"); // it can be updated/improve from navigate previous page when it's done
+                handleSuccess(message);
+                    navigate("/");
                 }, 2000);
             }else{
                 handleError(message);
             }
         }catch(err){
+            alert("Login failed!!");
             console.log(err);
         }
+
         setInputVal({
-            ...inputVal, 
-            email: "",
-            username: "",
+            ...inputVal,
+            email: "", 
             password: ""
         });
-    };
+    }
 
     const handleReset = (e) => {
         setInputVal({
@@ -77,17 +77,17 @@ function Signup(){
         });
     }
 
-    return(
-        <div className="grantparent-div-form my-5 mx-2 " style={{height: '70vh'}}>
-            
+    return ( 
+        <div className="grantparent-div-form mt-3 mb-5 mx-2" style={{height: '75vh'}}>
+                    
             <div className="parent-div-form">
-                <h2>Sign Up</h2>
+                <h2 className='pt-3 pb-4'>Login</h2>
 
                 
                 <form onSubmit={handleSubmit}  className="needs-validation" novalidate>
                     
-                    <div className="mb-2">
-                        <label htmlFor="email" className="form-label">Email</label>
+                    <div className="mb-4 pt-3">
+                        <label htmlFor="email" className="form-label fs-5">Email</label>
                         <input type="email" className="form-control" id="email" name="email" 
                         placeholder="abc@example.com" value={email} onChange={handleOnChange} required />
                         <div className="valid-feedback">
@@ -97,23 +97,11 @@ function Signup(){
                             Please enter valid email
                         </div>
                     </div>
-                
-                    <div className="mb-2">
-                        <label htmlFor="username" className="form-label">Username</label>
-                        <input type="text" className="form-control" id="username" name="username" 
-                        placeholder="manoj123" value={username} onChange={handleOnChange} required />
-                        <div className="valid-feedback">
-                            acceptable
-                        </div>
-                        <div className="invalid-feedback">
-                            Please enter valid username
-                        </div>
-                    </div>
-                    
+                                    
                     <div className="mb-5">
-                        <label htmlFor="password" className="form-label">Password</label>
+                        <label htmlFor="password" className="form-label fs-5">Password</label>
                         <input type="password" className="form-control" id="password" name="password"
-                         placeholder="Enter your password" value={password} onChange={handleOnChange} required />
+                            placeholder="Enter your password" value={password} onChange={handleOnChange} required />
                         <div className="valid-feedback">
                             acceptable
                         </div>
@@ -124,23 +112,24 @@ function Signup(){
                     
                     
                     <div className="form-submit-reset justify-content-between mx-2 mb-3 ">
-                        <button type="submit" className="btn btn-primary submit" >Sign Up</button>
+                        <button type="submit" className="btn btn-primary submit" >Login</button>
                         <button type="reset" className="btn btn-secondary reset" onClick={handleReset}>Reset</button>
                     </div>
 
                     <span className ='text-center'>
                         <p className =''>
-                            Already have an account ?
-                            <Link to={"/login"} className =' ms-2 link-underline link-underline-opacity-50 fw-semibold text-primary'>Login</Link>
+                            Don't have an Account ?
+                            <Link to={"/signup"} className =' ms-2 link-underline link-underline-opacity-50 fw-semibold text-primary'>Sign Up</Link>
                         </p>
                     </span>
 
                 </form>
             </div>
-            <ToastContainer />
+        <ToastContainer />
         </div>
-    );
-
+     );
 }
 
-export default Signup;
+
+export default Login
+;

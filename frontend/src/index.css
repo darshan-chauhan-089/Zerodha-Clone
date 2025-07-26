@@ -16,10 +16,68 @@ code {
   color: #387ed1 !important;
 }
 
-
+.active-link{
+  color: #387ed1 !important;
+}
 
 /* footer styling */
 .footer-description{
   font-size: 0.9rem;
   opacity: 0.8;
+}
+
+/* login and signup page styling */
+
+.parent-div-form{
+  padding: 1rem;
+}
+
+.mb-3 label{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.parent-div-form h2{
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding-bottom: 1.3rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.form-submit-reset{
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-submit-reset button{
+    width: 6rem;
+}
+.form-submit-reset .submit{
+    /* background-color: #387ed1; */
+}
+
+.form-submit-reset .reset{
+    width: 6rem;
+    background-color: #ef4444;
+}
+.form-submit-reset .reset:hover{
+    width: 6rem;
+    background-color: rgb(245, 43, 43);
+}
+
+@media (min-width: 600px) {
+    .grantparent-div-form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .parent-div-form{
+        padding: 1.4rem;
+        width: 550px;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        border-radius: 1.8rem;
+    }            
 }

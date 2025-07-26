@@ -57,9 +57,9 @@ function CreateTicket(){
                             "https://support.zerodha.com/category/your-zerodha-account/transfer-of-shares-and-conversion-of-shares"
                         ]
                     ]}
-                    headingData={["Your Zerodha Account", "https://support.zerodha.com/category/your-zerodha-account/login-credentials"]}
+                    headingData={["Your Zerodha Account", "https://support.zerodha.com/category/your-zerodha-account/login-credentials"]}   
                     icon={"fa fa-user-o me-2"}
-                />
+                />  {/* after creating the profile page update only above data*/}
                 <CreateTicketParts 
                     linkData = {[
                         [

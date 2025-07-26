@@ -1,12 +1,16 @@
 import Brokerage from './Brokerage';
 import Hero from './Hero';
 import OpenAccount from '../OpenAccount';
+import { useAuth } from '../../context/AuthContext';
 
 function PricingPage(){
+    const {user} = useAuth();
     return(
         <>
             <Hero />
-            <OpenAccount />
+            {
+                user ? "" : <OpenAccount />
+            }
             <Brokerage />
         </>
     );

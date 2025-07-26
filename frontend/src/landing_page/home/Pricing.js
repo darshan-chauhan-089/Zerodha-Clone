@@ -1,5 +1,4 @@
-import React from 'react';
-
+import {Link} from 'react-router-dom';
 function Pricing() {
     return ( 
         <div className='container py-4'>
@@ -9,12 +8,12 @@ function Pricing() {
                     <p className='info-detail lh-base text-muted'>
                     We pioneered the concept of discount broking and price transparency in India. Flat fees and no hidden charges.z
                     </p>
-                    <a className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0
+                    <Link className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0
                         link-underline-opacity-75-hover" 
-                        href="#">
+                        to='/pricing'>
                             See pricing 
                                 <i class="fa fa-long-arrow-right m-1" style={{position: "relative", top: "2px", opacity: "0.6"}}></i>
-                        </a>
+                    </Link>
                 </div>
                 
                 <div className='col-0 col-md-1'></div>
