@@ -2,16 +2,23 @@
 const express = require("express");
 const app = express();
 
+const cookieParser = require('cookie-parser');
+
 // dotenv setup
 require('dotenv').config();
 const PORT = process.env.PORT || 3001;
-const uri = process.env.MONGODB_ATLAS_URL ;
+const uri = process.env.MONGODB_ATLAS_URL;
+
+// routes
+const authRoute = require('./routes/authRoute');
+
 
 // Models
 const {HoldingsModel} = require('./models/HoldingsModel');
 const {WatchListModel} = require('./models/WatchListModel');
 const {PositionsModel} = require('./models/PositionsModel');
 const {OrdersModel} = require('./models/OrdersModel');
+const User = require('./models/userModel');
 
 // 
 const bodyParser= require('body-parser');
@@ -24,98 +31,113 @@ mongoose.connect(uri, {
     useNewUrlParser: true, 
     useUnifiedTopology: true,  
 })
-.then((res) => console.log("MongoDB is connected successfully."))
+.then(() => console.log("MongoDB is connected successfully."))
 .catch((err) => console.error(err));
 
 //require data
-const {holdings, watchList, positions, orders} = require('../dashboard/src/data/data');
-const initData = async ()  => {
-    // await OrdersModel.deleteMany({});
-    // orders.forEach((item) => {
-    //     let newOrder = new OrdersModel({
-    //         time : item.time,
+// const {holdings, watchList, positions, orders} = require('../dashboard/src/data/data');
+// const initData = async ()  => {
+//     // await OrdersModel.deleteMany({});
+//     // orders.forEach((item) => {
+//     //     let newOrder = new OrdersModel({
+//     //         time : item.time,
 
-    //         name : item.name,
+//     //         name : item.name,
 
-    //         product : item.product,
+//     //         product : item.product,
 
-    //         type : item.type,
+//     //         type : item.type,
 
-    //         qty : item.qty,
+//     //         qty : item.qty,
             
-    //         price: item.price,
+//     //         price: item.price,
 
-    //         status: item.status,
+//     //         status: item.status,
 
-    //         avg: item.avg,
-    //     });
-    //     newOrder.save();
-    // });
-    // console.log(await OrdersModel.find({}));
-    // await PositionsModel.deleteMany({});
-    // positions.forEach((item) => {
-    //     let newPosition = new PositionsModel({
-    //         product : item.product,
+//     //         avg: item.avg,
+//     //     });
+//     //     newOrder.save();
+//     // });
+//     // console.log(await OrdersModel.find({}));
+//     // await PositionsModel.deleteMany({});
+//     // positions.forEach((item) => {
+//     //     let newPosition = new PositionsModel({
+//     //         product : item.product,
 
-    //         name : item.instrument,
+//     //         name : item.instrument,
             
-    //         qty : item.qty,
+//     //         qty : item.qty,
             
-    //         avg: item.avg,
+//     //         avg: item.avg,
             
-    //         ltp: item.ltp,
+//     //         ltp: item.ltp,
 
-    //         pnl: item.pnl,
+//     //         pnl: item.pnl,
             
-    //         chg: item.chg,
-    //     });
-    //     newPosition.save();
-    // });
-    // console.log(await PositionsModel.find({}));
-    // await WatchListModel.deleteMany({});
-    // watchList.forEach((item) => {
-    //     let newWatchList = new WatchListModel({
-    //         name : item.name,
+//     //         chg: item.chg,
+//     //     });
+//     //     newPosition.save();
+//     // });
+//     // console.log(await PositionsModel.find({}));
+//     // await WatchListModel.deleteMany({});
+//     // watchList.forEach((item) => {
+//     //     let newWatchList = new WatchListModel({
+//     //         name : item.name,
     
-    //         price: item.price,
+//     //         price: item.price,
 
-    //         percent: item.percent
-    //     });
-    //     newWatchList.save();
-    // });
+//     //         percent: item.percent
+//     //     });
+//     //     newWatchList.save();
+//     // });
 
-    // console.log(await WatchListModel.find({}));
-    // await HoldingsModel.deleteMany({});
-    // console.log(await WatchListModel.find({}));
-    // await HoldingsModel.deleteMany({});
-    // holdings.forEach((item) => {
-    //     let newHoldings = new HoldingsModel({
-    //         name : item.name,
+//     // console.log(await WatchListModel.find({}));
+//     // await HoldingsModel.deleteMany({});
+//     // console.log(await WatchListModel.find({}));
+//     // await HoldingsModel.deleteMany({});
+//     // holdings.forEach((item) => {
+//     //     let newHoldings = new HoldingsModel({
+//     //         name : item.name,
     
-    //         qty : item.qty,
+//     //         qty : item.qty,
             
-    //         avg: item.avg,
+//     //         avg: item.avg,
             
-    //         price: item.price,
+//     //         price: item.price,
 
-    //         dayOpenPrice: item.dayOpenPrice,
+//     //         dayOpenPrice: item.dayOpenPrice,
             
-    //         net: item.net,
+//     //         net: item.net,
             
-    //         day: item.day,
+//     //         day: item.day,
             
-    //         currVal: item.currVal,
+//     //         currVal: item.currVal,
 
-    //         total_pl: item.total_pl,
-    //     });
-    //     newHoldings.save();
-    // });
-    // console.log(await HoldingsModel.find({}));
-}
+//     //         total_pl: item.total_pl,
+//     //     });
+//     //     newHoldings.save();
+//     // });
+//     // console.log(await HoldingsModel.find({}));
+// }
 
-app.use(bodyParser.json());
-app.use(cors());
+app.listen(PORT, () => {
+    console.log(` \nServer is listings on port ${PORT}. `);
+});
 
+app.use(
+    cors({
+        origin: ["http://localhost:3000", "http://localhost:3001"],
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        credentials: true,
+    })
+);
+
+app.use(cookieParser());
+
+app.use(express.json());
+
+app.use("/", authRoute);
+    
 app.get('/holdings', async (req, res) => {
     res.json(await HoldingsModel.find({}));
 });
@@ -132,12 +154,19 @@ app.get('/orders', async (req, res) => {
     res.json(await OrdersModel.find({}));
 });
 
-app.get("/" , (req, res) => {
-    // initData();
-    res.send("complete!");
-    res.cookie("cookie 1" , "i am cookie");
+app.get('/example', async (req, res) => {
+    res.cookie("name", "nope");
+    res.cookie("name", "nope");
+    res.cookie("name", "nope");
+    res.cookie("name", "nope");
+    res.send(req.headers);
 });
 
-app.listen(PORT, () => {
-    console.log("Server is listings on port 8080. ");
+app.get("/" , async (req, res) => {
+    // initData();
+    // await User.deleteMany({});
+
+    
+    res.send("complete!");
 });
+
