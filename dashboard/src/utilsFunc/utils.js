@@ -1,3 +1,4 @@
+import axios from 'axios';
 export const getStockUpDown = (param) => {
     return param >= 0 ? "stock_up_color" : "stock_down_color";
 }
@@ -38,4 +39,40 @@ export const formatCompactNumber = (number) => {
         compactDisplay: "short" // Use short abbreviations (e.g., K, not thousands)
     });
     return formatter.format(number);
+}
+
+export const getCookie = (name) =>  {
+  const cookieString = document.cookie;
+  const cookies = cookieString.split("; ");
+  const found = cookies.find(row => row.startsWith(name + "="));
+  return found ? found.split("=")[1] : null;
+}
+
+export const verifyToken = async (token, setAuthenticated, setLoading) => {
+    if(token){
+        try{
+            const {data} = await axios.get(
+                "http://localhost:8080", 
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                },
+            );
+            const { status } = data;
+            console.log("status" , status);
+            if(status){
+                localStorage.setItem("token", token);
+                setAuthenticated(true);
+                setLoading(false);
+            }else{                        
+                window.location.href = "http://localhost:3000/login";
+            }
+        }catch(err){
+            console.error("Verifytoken error: " , err);
+            window.location.href = "http://localhost:3000/login";
+        }
+    }else{
+        window.location.href = "http://localhost:3000/login";
+    }
 }

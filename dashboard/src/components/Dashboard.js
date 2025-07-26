@@ -10,6 +10,7 @@ import Funds from './Funds';
 import Apps from './Apps';
 import WatchList from './WatchList';
 import { GeneralContextProvider } from './GeneralContext';
+import ProtectedRoute from './ProtectedRoute';
 
 function Dashboard() {
 
@@ -39,13 +40,41 @@ function Dashboard() {
             </GeneralContextProvider>
             <div className='content p-4'>
                 <Routes>
-                    <Route path='/' element={<Summary totalProfitLoss={totalProfitLoss} totalCurrentValue={totalCurrentValue} totalInvestment={totalInvestment} />} />
-                    <Route path='/orders' element={<Orders />} />
-                    <Route path='/holdings' element={<Holdings holdings={holdings} totalInvestment={totalInvestment} 
-                    totalCurrentValue={totalCurrentValue} totalProfitLoss={totalProfitLoss} dayTotalPL={dayTotalPL}/>} />
-                    <Route path='/positions' element={<Positions />} />
-                    <Route path='/funds' element={<Funds />} />
-                    {/* <Route path='/apps' element={<Apps />} /> */}
+                    <Route path='/' 
+                        element={
+                            <ProtectedRoute>
+                                <Summary totalProfitLoss={totalProfitLoss} totalCurrentValue={totalCurrentValue} totalInvestment={totalInvestment} />
+                            </ProtectedRoute>
+                            } />
+                    <Route path='/orders' 
+                        element={
+                            <ProtectedRoute>
+                                <Orders />
+                            </ProtectedRoute>
+                        }
+                     />
+                    <Route path='/holdings' 
+                        element={
+                            <ProtectedRoute>
+                                <Holdings holdings={holdings} totalInvestment={totalInvestment} 
+                                totalCurrentValue={totalCurrentValue} totalProfitLoss={totalProfitLoss} dayTotalPL={dayTotalPL}/>
+                            </ProtectedRoute>
+
+                        }
+                    />
+                    <Route path='/positions'
+                        element={
+                            <ProtectedRoute>
+                                <Positions />
+                            </ProtectedRoute>
+                        } 
+                    />
+                    <Route path='/funds' 
+                        element={
+                            <ProtectedRoute>
+                                <Funds />
+                            </ProtectedRoute>
+                        } />
                 </Routes>
             </div>
 
