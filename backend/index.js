@@ -11,13 +11,10 @@ const uri = process.env.MONGODB_ATLAS_URL;
 
 // routes
 const authRoute = require('./routes/authRoute');
+const dashboardRoute = require('./routes/dashboardRoute');
 
 
 // Models
-const {HoldingsModel} = require('./models/HoldingsModel');
-const {WatchListModel} = require('./models/WatchListModel');
-const {PositionsModel} = require('./models/PositionsModel');
-const {OrdersModel} = require('./models/OrdersModel');
 const User = require('./models/userModel');
 
 // 
@@ -34,91 +31,108 @@ mongoose.connect(uri, {
 .then(() => console.log("MongoDB is connected successfully."))
 .catch((err) => console.error(err));
 
-//require data
+
+let id = '6886269b2691a681852d461f';
+// require data
 // const {holdings, watchList, positions, orders} = require('../dashboard/src/data/data');
-// const initData = async ()  => {
-//     // await OrdersModel.deleteMany({});
-//     // orders.forEach((item) => {
-//     //     let newOrder = new OrdersModel({
-//     //         time : item.time,
+// const { HoldingsModel } = require("./models/HoldingsModel");
+// const { OrdersModel } = require("./models/OrdersModel");
+// const { PositionsModel } = require("./models/PositionsModel");
+const initData = async ()  => {
+    // await OrdersModel.deleteMany({});
+    // orders.forEach((item) => {
+    //     let newOrder = new OrdersModel({
 
-//     //         name : item.name,
+    //         owner: id,
 
-//     //         product : item.product,
+    //         time : item.time,
 
-//     //         type : item.type,
+    //         name : item.name,
 
-//     //         qty : item.qty,
+    //         product : item.product,
+
+    //         type : item.type,
+
+    //         qty : item.qty,
             
-//     //         price: item.price,
+    //         price: item.price,
 
-//     //         status: item.status,
+    //         status: item.status,
 
-//     //         avg: item.avg,
-//     //     });
-//     //     newOrder.save();
-//     // });
-//     // console.log(await OrdersModel.find({}));
-//     // await PositionsModel.deleteMany({});
-//     // positions.forEach((item) => {
-//     //     let newPosition = new PositionsModel({
-//     //         product : item.product,
+    //         avg: item.avg,
+    //     });
+    //     newOrder.save();
+    // });
+    // console.log(await OrdersModel.find({}));
+    // await PositionsModel.deleteMany({});
+    // positions.forEach((item) => {
+    //     let newPosition = new PositionsModel({
 
-//     //         name : item.instrument,
-            
-//     //         qty : item.qty,
-            
-//     //         avg: item.avg,
-            
-//     //         ltp: item.ltp,
+    //         owner: id,
 
-//     //         pnl: item.pnl,
+    //         product : item.product,
+
+    //         name : item.instrument,
             
-//     //         chg: item.chg,
-//     //     });
-//     //     newPosition.save();
-//     // });
-//     // console.log(await PositionsModel.find({}));
-//     // await WatchListModel.deleteMany({});
-//     // watchList.forEach((item) => {
-//     //     let newWatchList = new WatchListModel({
-//     //         name : item.name,
+    //         qty : item.qty,
+            
+    //         avg: item.avg,
+            
+    //         ltp: item.ltp,
+
+    //         pnl: item.pnl,
+            
+    //         chg: item.chg,
+    //     });
+    //     newPosition.save();
+    // });
+    // console.log(await PositionsModel.find({}));
+    // await WatchListModel.deleteMany({});
+    // watchList.forEach((item) => {
+    //     let newWatchList = new WatchListModel({
+    //         name : item.name,
     
-//     //         price: item.price,
+    //         price: item.price,
 
-//     //         percent: item.percent
-//     //     });
-//     //     newWatchList.save();
-//     // });
+    //         percent: item.percent
+    //     });
+    //     newWatchList.save();
+    // });
 
-//     // console.log(await WatchListModel.find({}));
-//     // await HoldingsModel.deleteMany({});
-//     // console.log(await WatchListModel.find({}));
-//     // await HoldingsModel.deleteMany({});
-//     // holdings.forEach((item) => {
-//     //     let newHoldings = new HoldingsModel({
-//     //         name : item.name,
+    // console.log(await WatchListModel.find({}));
+    // await HoldingsModel.deleteMany({});
+    // console.log(await WatchListModel.find({}));
+    // await HoldingsModel.deleteMany({});
+    // holdings.forEach((item) => {
+    //     let newHoldings = new HoldingsModel({
+
+    //         owner : id,
+
+    //         name : item.name,
     
-//     //         qty : item.qty,
+    //         qty : item.qty,
             
-//     //         avg: item.avg,
+    //         avg: item.avg,
             
-//     //         price: item.price,
+    //         price: item.price,
 
-//     //         dayOpenPrice: item.dayOpenPrice,
+    //         dayOpenPrice: item.dayOpenPrice,
             
-//     //         net: item.net,
+    //         net: item.net,
             
-//     //         day: item.day,
+    //         day: item.day,
             
-//     //         currVal: item.currVal,
+    //         currVal: item.currVal,
 
-//     //         total_pl: item.total_pl,
-//     //     });
-//     //     newHoldings.save();
-//     // });
-//     // console.log(await HoldingsModel.find({}));
-// }
+    //         total_pl: item.total_pl,
+    //     });
+    //     newHoldings.save();
+    // });
+    // let data;
+    // data = holdings.map((obj) => ({...obj, owner: demouser }));
+    // await HoldingsModel.insertMany(data);
+    // console.log(await HoldingsModel.find({}));
+}
 
 app.listen(PORT, () => {
     console.log(` \nServer is listings on port ${PORT}. `);
@@ -137,22 +151,9 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use("/", authRoute);
-    
-app.get('/holdings', async (req, res) => {
-    res.json(await HoldingsModel.find({}));
-});
 
-app.get('/watchlists', async (req, res) => {
-    res.json(await WatchListModel.find({}));
-});
+app.use("/:userId", dashboardRoute);
 
-app.get('/positions', async (req, res) => {
-    res.json(await PositionsModel.find({}));
-});
-
-app.get('/orders', async (req, res) => {
-    res.json(await OrdersModel.find({}));
-});
 
 app.get('/example', async (req, res) => {
     res.cookie("name", "nope");
@@ -164,9 +165,16 @@ app.get('/example', async (req, res) => {
 
 app.get("/" , async (req, res) => {
     // initData();
-    // await User.deleteMany({});
-
-    
-    res.send("complete!");
+    // await .deleteMany({});
+    res.send("complete!!");
 });
 
+app.all("*", (req, res, next) => {
+    return next(new ExpressError(404, "Page not Found!!"));
+});
+
+app.use((err, req, res, next) => {
+    let {status = 500, message = "something went wrong"} = err;
+    console.log(err);
+    res.status(status).send(message);
+})

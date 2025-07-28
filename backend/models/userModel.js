@@ -15,6 +15,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Your passowrd is required, "],
     },
+    slug: {
+        type: String,
+    },
     createAt: {
         type: Date,
         default: new Date(),

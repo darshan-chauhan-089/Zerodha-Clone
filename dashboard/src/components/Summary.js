@@ -1,11 +1,17 @@
-import React from 'react';
+import { useEffect } from 'react';
+import axios from 'axios';
 import PieChartOutlineIcon from '@mui/icons-material/PieChartOutline';
 import DataSaverOffIcon from '@mui/icons-material/DataSaverOff';
 import WaterDropOutlinedIcon from '@mui/icons-material/WaterDropOutlined';
 import BusinessCenterOutlinedIcon from '@mui/icons-material/BusinessCenterOutlined';
 import { formatCompactNumber, getStockUpDown } from '../utilsFunc/utils';
+import { useData } from '../context/DataContext';
 
-function Summary({totalProfitLoss, totalCurrentValue, totalInvestment}) {
+function Summary() {
+
+    const {data} = useData();
+    console.log("data in AuthContext: ", data)
+
     return ( 
         <div className='summary-conatiner'>
             <h2 className='fs-3 fs-md-4 fw-light mb-5 me-3 pb-4 align-self-center border-bottom'>Hi, Demo</h2>
@@ -62,12 +68,12 @@ function Summary({totalProfitLoss, totalCurrentValue, totalInvestment}) {
 
                 <div className='d-flex mt-3'>
                     <div className='me-5'>
-                        <p className={`fs-1 fw-light mb-1 ${getStockUpDown(totalProfitLoss)}`}>{formatCompactNumber(totalProfitLoss)}</p>
+                        <p className={`fs-1 fw-light mb-1 ${getStockUpDown(data?.holdingsTotalData?.totalProfitLoss)}`}>{formatCompactNumber(data?.holdingsTotalData?.totalProfitLoss)}</p>
                         <p className='font-size-85 text-muted'>P&L</p>
                     </div>
                     <div className='ms-5 px-4 py-1 d-flex flex-column justify-content-around border-start'>
-                        <p className='font-size-85 text-muted mb-0'>Current value: <span className='text-black'>{formatCompactNumber(totalCurrentValue)}</span></p>
-                                <p className='font-size-85 text-muted mb-0'>investment: <span className='text-black'>{formatCompactNumber(totalInvestment)}</span></p>
+                        <p className='font-size-85 text-muted mb-0'>Current value: <span className='text-black'>{formatCompactNumber(data?.holdingsTotalData?.totalCurrentValue)}</span></p>
+                                <p className='font-size-85 text-muted mb-0'>investment: <span className='text-black'>{formatCompactNumber(data?.holdingsTotalData?.totalInvestment)}</span></p>
                     </div>
                 </div>
             </div>

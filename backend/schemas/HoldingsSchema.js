@@ -1,6 +1,10 @@
 const {Schema} = require('mongoose');
-
 module.exports.HoldingsSchema = new Schema({
+    owner : {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+
     name : String,
     
     qty : Number,

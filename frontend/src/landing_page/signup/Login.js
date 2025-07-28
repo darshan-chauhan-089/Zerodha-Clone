@@ -46,9 +46,9 @@ function Login() {
                 { withCredentials: true }
             );
 
-            const {message, success, username} = data;
+            const {message, success, user} = data;
             if(success){
-                login(getCookie('token'), {username : username} );
+                login(getCookie('token'), {username : user.username} );
                 setTimeout(() => {
                 handleSuccess(message);
                     navigate("/");
@@ -131,5 +131,4 @@ function Login() {
 }
 
 
-export default Login
-;
+export default Login;

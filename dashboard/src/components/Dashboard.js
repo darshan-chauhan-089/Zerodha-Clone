@@ -1,5 +1,5 @@
 import React , {useEffect, useState, useRef} from 'react';
-import {Route, Routes} from 'react-router-dom';
+import {Outlet, Route, Routes} from 'react-router-dom';
 import axios from 'axios';
 
 import Summary from './Summary';
@@ -7,7 +7,6 @@ import Orders from './Orders';
 import Holdings from './Holdings';
 import Positions from './Positions';
 import Funds from './Funds';
-import Apps from './Apps';
 import WatchList from './WatchList';
 import { GeneralContextProvider } from './GeneralContext';
 import ProtectedRoute from './ProtectedRoute';
@@ -15,21 +14,21 @@ import ProtectedRoute from './ProtectedRoute';
 function Dashboard() {
 
     // const holdings = useRef([]);
-    const [holdings, setHoldings] = useState([]); 
+    // const [holdings, setHoldings] = useState([]); 
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        axios.get("http://localhost:8080/holdings").then((res) => {
-            // holdings.current = res.data;
-            setHoldings(res.data);
-        });
+    //     axios.get("http://localhost:8080/holdings").then((res) => {
+    //         // holdings.current = res.data;
+    //         setHoldings(res.data);
+    //     });
 
-    }, []);
+    // }, []);
 
-    const totalInvestment = holdings.reduce((sum, item) => sum + (item.avg * item.qty), 0);
-    const totalCurrentValue = holdings.reduce((sum, item) => sum + (item.currVal), 0);
-    const totalProfitLoss = totalInvestment - totalCurrentValue;
-    const dayTotalPL = holdings.reduce((res, item) => res + ((item.price - item.dayOpenPrice) * item.qty), 0);
+    // const totalInvestment = holdings.reduce((sum, item) => sum + (item.avg * item.qty), 0);
+    // const totalCurrentValue = holdings.reduce((sum, item) => sum + (item.currVal), 0);
+    // const totalProfitLoss = totalInvestment - totalCurrentValue;
+    // const dayTotalPL = holdings.reduce((res, item) => res + ((item.price - item.dayOpenPrice) * item.qty), 0);
 
     // console.log(totalInvestment, totalCurrentValue, totalProfitLoss, dayTotalPL);
 
@@ -39,6 +38,10 @@ function Dashboard() {
                 <WatchList />
             </GeneralContextProvider>
             <div className='content p-4'>
+                <Outlet />
+            </div>
+
+            {/* <div className='content p-4'>
                 <Routes>
                     <Route path='/' 
                         element={
@@ -76,8 +79,7 @@ function Dashboard() {
                             </ProtectedRoute>
                         } />
                 </Routes>
-            </div>
-
+            </div> */}
         </div>
     );
 }

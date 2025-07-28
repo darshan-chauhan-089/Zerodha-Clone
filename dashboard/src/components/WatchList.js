@@ -13,6 +13,7 @@ import Loader from './Loader';
 import axios from 'axios';
 import BuyActionWindow from './BuyActionWindow';
 import GeneralContext from './GeneralContext';
+import { useAuth } from '../context/AuthContext';
 // import {Button} from '@mui/material';
 
 // import {KeyboardArrowUpIcon, KeyboardArrowDownIcon} from '@mui/icons-material';
@@ -31,12 +32,13 @@ const getTopOffset = (index) => {
 
 function WatchList() {
 
+    const {user} = useAuth();
     const watchlists = useRef([]);
     const [wData, setWData] = useState([]);
 
     useEffect(() => {
         setTimeout(() => {
-            axios.get("http://localhost:8080/watchlists").then((res)=> {
+            axios.get(`http://localhost:8080/${user.id}/watchlists`).then((res)=> {
                 watchlists.current = res.data;
                 // console.log(watchlists.current);
                 setWData(res.data);

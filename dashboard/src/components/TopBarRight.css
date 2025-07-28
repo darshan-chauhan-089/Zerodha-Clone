@@ -11,20 +11,21 @@
     display: none;
 }
 
-.menu-list-ul .menu-links{
+.topbar-right-container .menu-list .menu-Link{
+    color: #444;
+    text-decoration: none;
+}
+
+.menu-list-ul .menu-links p{
     color: #444;
     margin: 0;
 }
 
-.menu-list-ul .active-menu-links{
+.menu-list-ul .active-menu-links p{
     color: var(---orange-color);
     margin: 0;
 }
 
-.topbar-right-container .menu-list .menu-Link{
-    color: var(---orange-color);
-    text-decoration: none;
-}
 
 .topbar-right-container .profile-link {
     cursor: pointer;

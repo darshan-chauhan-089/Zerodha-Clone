@@ -1,9 +1,11 @@
+import { useAuth } from "../../context/AuthContext";
 import Hero from "./Hero";
 import LeftSection from "./LeftSection";
 import RightSection from "./RightSection";
 import Universe from "./Universe";
 
 function ProductPage(){
+    const {user, demouser} = useAuth();
     return(
         <>
             <Hero />
@@ -15,7 +17,9 @@ function ProductPage(){
                 description="Our ultra-fast flagship trading platform with streaming market data, advanced charts, an elegant UI, and more. Enjoy the Kite experience seamlessly on your Android and iOS devices."
                 googlePlayStore="https://play.google.com/store/apps/details?id=com.zerodha.kite3"
                 appStore="https://apps.apple.com/in/app/zerodha-kite-trade-invest/id1449453802"
-                tryDemo={"/"} // remain
+                // tryDemo={'/'} // remain
+                tryDemo={`http://localhost:3001/${user ? user.id : demouser}`} // remain
+                // tryDemo={`http://localhost:3001`} // remain
                 learnMore="https://zerodha.com/products/kite"
 
              />

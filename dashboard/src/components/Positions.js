@@ -3,11 +3,12 @@ import React, {useState, useEffect, useRef} from 'react';
 import TableHead from './TableHead';
 import axios from 'axios';
 import {getStockUpDown, search} from '../utilsFunc/utils';
-import { Button } from '@mui/material';
 import Loader from './Loader';
+import { useAuth } from '../context/AuthContext';
 
 function Positions() {
 
+    const {user} = useAuth();
     const positions = useRef([]);
     const [tdata, setTData] = useState([]);
 
@@ -16,7 +17,7 @@ function Positions() {
 
     useEffect(() => {
         setTimeout(() => {
-            axios.get("http://localhost:8080/positions").then((res) => {
+            axios.get(`http://localhost:8080/${user.id}/positions`).then((res) => {
             positions.current = res.data;
             setTData(res.data);
             });

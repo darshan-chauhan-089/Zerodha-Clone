@@ -1,3 +1,4 @@
+const { nanoid } = require('nanoid');
 const User = require('../models/userModel');
 const { createSecretToken } = require('../utils/SecretToken');
 const bcrypt = require('bcrypt');
@@ -12,7 +13,9 @@ exports.signup = async (req, res, next) => {
             return res.json({ message : "User already exists"});
         }
 
-        const newUser = await User.create({email, password, username, createdAt});
+        const slug = nanoid(12);
+        const newUser = await User.create({email, password, username, slug, createdAt});
+
         const token = createSecretToken(newUser._id);
 
         res.cookie("token", token, {
@@ -56,10 +59,13 @@ exports.login = async (req, res, next) => {
         });
 
         res.status(201).json({ message: "User logged in successfully", success: true, 
-            username: user.username },
+            user: user },
         );
+
+        console.log(user.username, "logged in.");
         next();
     }catch(err){
+        res.send(err);
         console.error(err);
     }
 }

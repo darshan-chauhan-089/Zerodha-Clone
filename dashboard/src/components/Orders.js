@@ -4,8 +4,11 @@ import TableHead from './TableHead';
 import axios from 'axios';
 import { search } from '../utilsFunc/utils';
 import Loader from './Loader';
+import { useAuth } from '../context/AuthContext';
 
 function Orders() {
+
+    const {user} = useAuth();
 
     const ordersData = useRef([]);
     const openOrders = useRef([]);
@@ -22,7 +25,7 @@ function Orders() {
         
         setTimeout(() => {
             console.log("states !!");
-            axios.get("http://localhost:8080/orders").then((res) => {
+            axios.get(`http://localhost:8080/${user.id}/orders`).then((res) => {
                 
                 if(ordersData.current.length === 0){
                     ordersData.current = res.data;

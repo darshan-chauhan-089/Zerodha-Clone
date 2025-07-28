@@ -4,6 +4,7 @@ function LeftSection(
         imageURL,
         ProductName, 
         description,
+        tryDemo
     }
 ){
     return(
@@ -25,7 +26,7 @@ function LeftSection(
                         
                         <div className="d-flex mb-2">
                             <Link className="me-3 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0
-                                link-underline-opacity-75-hover mb-3 text-nowrap" to={"/products"}> {/* remain for only kite */}
+                                link-underline-opacity-75-hover mb-3 text-nowrap" to={tryDemo}> {/* remain for only kite */}
                                 Try demo
                                 <i class="fa fa-long-arrow-right m-1" style={{position: "relative", top: "2px", color: "0d6efd", opacity: "0.6"}}></i>
                             </Link>
