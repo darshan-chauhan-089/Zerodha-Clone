@@ -11,23 +11,19 @@ import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined';
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import Loader from './Loader';
 import axios from 'axios';
-import BuyActionWindow from './BuyActionWindow';
-import GeneralContext from './GeneralContext';
+import GeneralContext from '../context/GeneralContext';
 import { useAuth } from '../context/AuthContext';
-// import {Button} from '@mui/material';
 
-// import {KeyboardArrowUpIcon, KeyboardArrowDownIcon} from '@mui/icons-material';
+let data; 
 
-const getTopOffset = (index) => {
-    const items = document.querySelectorAll('.watch-list-container li');
-    const item = items[index];
-
-    // const rect = item.getBoundingClientRect();
-    // let top = rect.top + window.scrollY;
-    console.log(index);
-    console.log(items);
-    console.log(item);
-    return 1;
+export function getWatchListItem(name) {
+    let i = 0;
+    while(i <= data.length){
+        if(data[i].name === name.toUpperCase()){
+            return data[i];
+        }
+        i++;
+    }
 }
 
 function WatchList() {
@@ -40,16 +36,14 @@ function WatchList() {
         setTimeout(() => {
             axios.get(`http://localhost:8080/${user.id}/watchlists`).then((res)=> {
                 watchlists.current = res.data;
-                // console.log(watchlists.current);
+                data = res.data;
                 setWData(res.data);
             });
         }, 500);
     }, []); 
 
-    
-    
     return ( 
-        <div className='watch-list-container d-inline border-end p-3 position-relative'  >
+        <div className='watch-list-container d-inline border-end p-3 position-relative'>
             <div className='border-bottom pb-2 mb-4'>
                 <form className="d-flex" role="search">
                     <input id="search-input" className="form-control me-2" type="search" placeholder="Search (infy, ongc, ics)" aria-label="Search"
@@ -61,13 +55,6 @@ function WatchList() {
                 ?
                 <Loader></Loader> : 
                 <ul className='list list-unstyled p-0 m-0'>
-                    {
-                        wData.map((item, index) => {
-                            return(
-                                <WatchListItem item={item} key={index}></WatchListItem>
-                            );
-                        })
-                    }
                     {
                         wData.map((item, index) => {
                             return(
@@ -102,7 +89,7 @@ const WatchListItem = ({item}) => {
                     {item.name}
                 </p>
                 <div className="d-flex">
-                    <p className="table-data mx-2 mb-0 align-self-start">
+                    <p className="table-data mx-2 mb-0 align-self-center">
                         {item.percent}
                     </p>
                     <span>
@@ -110,18 +97,19 @@ const WatchListItem = ({item}) => {
                             item.percent >= 0 ? <KeyboardArrowUp className='stock_up_color' /> : <KeyboardArrowDown className='stock_down_color' />
                         }
                     </span>
-                    <p className={`table-data ms-2 mb-0 align-self-end ${getStockUpDown(item.percent)} `}
+                    <p className={`table-data ms-2 mb-0 align-self-center ${getStockUpDown(item.percent)} `}
                     style={{width: "70px"}}>
                         {item.price}
                     </p>
                 </div>
-                {showWatchListActions && <WatchListItemAction uid={item.name} />}
+                {showWatchListActions && <WatchListItemAction itemInfo={item} />}  
+                {/* itemInfo object of name and price(fixed) */}
             </div>
         </li>
     );
 }
 
-const WatchListItemAction = (({uid}) => {
+const WatchListItemAction = (({itemInfo}) => {
     const generalContext = useContext(GeneralContext);
 
     const handleBuyClick = (e) => {
@@ -132,10 +120,10 @@ const WatchListItemAction = (({uid}) => {
             topOffset = 365;
         }
         
-        generalContext.openBuyWindow(uid, topOffset);
+        generalContext.openBuyWindow(itemInfo, topOffset);
     }
     return (
-        <span className='watchlist-item-action m-0 pe-3' uid={uid}>
+        <span className='watchlist-item-action item-action m-0 pe-3' uid={itemInfo.name}>
             <span className=''>
                 <Tooltip title="Buy" placement="top" arrow >
                     <button className='action-btn action-buy'

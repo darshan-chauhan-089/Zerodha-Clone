@@ -3,6 +3,7 @@ import {useContext, createContext, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import { getCookie } from '../utils/utils';
 import axios from 'axios';
+import { showSuccess } from '../utils/toast';
 
 const AuthContext = createContext({
     user: null,
@@ -58,6 +59,7 @@ export const AuthContextProvider = ({children}) => {
         setToken(null);
         setUser(null);
         navigate('/'); //the previous page
+        showSuccess("You have been logout.")
     };
 
     return(

@@ -6,15 +6,17 @@ import WaterDropOutlinedIcon from '@mui/icons-material/WaterDropOutlined';
 import BusinessCenterOutlinedIcon from '@mui/icons-material/BusinessCenterOutlined';
 import { formatCompactNumber, getStockUpDown } from '../utilsFunc/utils';
 import { useData } from '../context/DataContext';
+import { useAuth } from '../context/AuthContext';
 
 function Summary() {
 
     const {data} = useData();
+    const {user} = useAuth();
     console.log("data in AuthContext: ", data)
 
     return ( 
         <div className='summary-conatiner'>
-            <h2 className='fs-3 fs-md-4 fw-light mb-5 me-3 pb-4 align-self-center border-bottom'>Hi, Demo</h2>
+            <h2 className='fs-3 fs-md-4 fw-light mb-5 me-3 pb-4 align-self-center border-bottom'>Hi, {user.username}</h2>
 
             <div className='equity-commodity-container d-flex flex-wrap justify-content-around border-bottom mb-5'>
                 <div className='text-nowrap mb-5'>

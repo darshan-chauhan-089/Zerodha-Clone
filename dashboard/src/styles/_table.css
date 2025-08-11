@@ -1,4 +1,5 @@
 th{
+    text-wrap: nowrap;
     cursor: pointer;
     font-size: 1.1rem !important;
     font-weight: 400 !important;

@@ -6,4 +6,8 @@ exports.WatchListSchema = new Schema({
     price: Number,
     
     percent: Number,
+
+    dayOpenPrice: Number,
+
+    product: String,
 });

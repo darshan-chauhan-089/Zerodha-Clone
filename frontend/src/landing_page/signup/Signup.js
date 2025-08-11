@@ -1,10 +1,9 @@
 import React , {useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 import { getCookie } from '../../utils/utils';
 import { useAuth } from '../../context/AuthContext';
-
+import { showError, showSuccess } from '../../utils/toast';
 
 function Signup(){
     const {login} = useAuth();
@@ -25,17 +24,6 @@ function Signup(){
         });
     };
 
-    const handleError = (err) => {
-        toast.error(err, {
-            position: "top-right"
-        });
-    }
-    const handleSuccess = (msg) => {
-        toast.success(msg, {
-            position: "top-right"
-        });
-    }
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
@@ -50,12 +38,12 @@ function Signup(){
             const { success, message } = data;
             if(success){
                 login(getCookie('token'), {username: username});
-                handleSuccess(message);
+                showSuccess('Account created successfully.');
                 setTimeout(() => {
                     navigate("/"); // it can be updated/improve from navigate previous page when it's done
                 }, 2000);
             }else{
-                handleError(message);
+                showError("Signup failed. Try again later!");
             }
         }catch(err){
             console.log(err);
@@ -137,7 +125,6 @@ function Signup(){
 
                 </form>
             </div>
-            <ToastContainer />
         </div>
     );
 

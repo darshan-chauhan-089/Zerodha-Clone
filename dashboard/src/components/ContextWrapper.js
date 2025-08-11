@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { AuthContextProvider } from "../context/AuthContext";
 import { DataContextProvider } from "../context/DataContext";
+import { GeneralContextProvider } from "../context/GeneralContext";
 
 function ContextWrapper({children}) {
     
@@ -10,7 +11,9 @@ function ContextWrapper({children}) {
     return ( 
         <AuthContextProvider userIdFromUrl={userId}>
             <DataContextProvider userIdFromUrl={userId}>
-                {children}
+                <GeneralContextProvider>
+                    {children}
+                </GeneralContextProvider>
             </DataContextProvider>
         </AuthContextProvider>
      );

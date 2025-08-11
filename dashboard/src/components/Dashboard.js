@@ -8,7 +8,7 @@ import Holdings from './Holdings';
 import Positions from './Positions';
 import Funds from './Funds';
 import WatchList from './WatchList';
-import { GeneralContextProvider } from './GeneralContext';
+import { GeneralContextProvider } from '../context/GeneralContext';
 import ProtectedRoute from './ProtectedRoute';
 
 function Dashboard() {
@@ -37,7 +37,7 @@ function Dashboard() {
             <GeneralContextProvider>
                 <WatchList />
             </GeneralContextProvider>
-            <div className='content p-4'>
+            <div className='content p-4 overflow-auto'>
                 <Outlet />
             </div>
 

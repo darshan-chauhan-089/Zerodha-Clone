@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext';
 import { getCookie } from '../../utils/utils';
+import { showError, showSuccess } from '../../utils/toast';
 
 function Login() {
     const {login} = useAuth();
@@ -23,18 +23,7 @@ function Login() {
         });
     };
 
-    const handleSuccess = (msg) => {
-        toast.success(msg , {
-            position: "top-right"
-        });
-    }
-
-    const handleError = (err) => {
-        toast.error(err , {
-            position: "top-right"
-        });
-    }
-
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
@@ -49,12 +38,12 @@ function Login() {
             const {message, success, user} = data;
             if(success){
                 login(getCookie('token'), {username : user.username} );
+                showSuccess(`Welcome back, ${user.username}`);
                 setTimeout(() => {
-                handleSuccess(message);
                     navigate("/");
                 }, 2000);
             }else{
-                handleError(message);
+                showError("Login failed");
             }
         }catch(err){
             alert("Login failed!!");
@@ -125,7 +114,6 @@ function Login() {
 
                 </form>
             </div>
-        <ToastContainer />
         </div>
      );
 }

@@ -12,6 +12,7 @@ const uri = process.env.MONGODB_ATLAS_URL;
 // routes
 const authRoute = require('./routes/authRoute');
 const dashboardRoute = require('./routes/dashboardRoute');
+const {ExpressError} = require('./utils/utils');
 
 
 // Models
@@ -34,56 +35,57 @@ mongoose.connect(uri, {
 
 let id = '6886269b2691a681852d461f';
 // require data
-// const {holdings, watchList, positions, orders} = require('../dashboard/src/data/data');
+const {holdings, watchList, positions, orders} = require('../dashboard/src/data/data');
 // const { HoldingsModel } = require("./models/HoldingsModel");
 // const { OrdersModel } = require("./models/OrdersModel");
 // const { PositionsModel } = require("./models/PositionsModel");
+const { WatchListModel } = require("./models/WatchListModel");
 const initData = async ()  => {
     // await OrdersModel.deleteMany({});
     // orders.forEach((item) => {
-    //     let newOrder = new OrdersModel({
+        // let newOrder = new OrdersModel({
 
-    //         owner: id,
+        //     owner: id,
 
-    //         time : item.time,
+        //     time : item.time,
 
-    //         name : item.name,
+        //     name : item.name,
 
-    //         product : item.product,
+        //     product : item.product,
 
-    //         type : item.type,
+        //     type : item.type,
 
-    //         qty : item.qty,
+        //     qty : item.qty,
             
-    //         price: item.price,
+        //     price: item.price,
 
-    //         status: item.status,
+        //     status: item.status,
 
-    //         avg: item.avg,
-    //     });
+        //     avg: item.avg,
+        // });
     //     newOrder.save();
     // });
     // console.log(await OrdersModel.find({}));
     // await PositionsModel.deleteMany({});
     // positions.forEach((item) => {
-    //     let newPosition = new PositionsModel({
+        // let newPosition = new PositionsModel({
 
-    //         owner: id,
+        //     owner: id,
 
-    //         product : item.product,
+        //     product : item.product,
 
-    //         name : item.instrument,
+        //     name : item.instrument,
             
-    //         qty : item.qty,
+        //     qty : item.qty,
             
-    //         avg: item.avg,
+        //     avg: item.avg,
             
-    //         ltp: item.ltp,
+        //     ltp: item.ltp,
 
-    //         pnl: item.pnl,
+        //     pnl: item.pnl,
             
-    //         chg: item.chg,
-    //     });
+        //     chg: item.chg,
+        // });
     //     newPosition.save();
     // });
     // console.log(await PositionsModel.find({}));
@@ -94,7 +96,11 @@ const initData = async ()  => {
     
     //         price: item.price,
 
-    //         percent: item.percent
+    //         percent: item.percent,
+
+    //         dayOpenPrice: item.dayOpenPrice,
+
+    //         product: item.product,
     //     });
     //     newWatchList.save();
     // });
@@ -155,23 +161,15 @@ app.use("/", authRoute);
 app.use("/:userId", dashboardRoute);
 
 
-app.get('/example', async (req, res) => {
-    res.cookie("name", "nope");
-    res.cookie("name", "nope");
-    res.cookie("name", "nope");
-    res.cookie("name", "nope");
-    res.send(req.headers);
-});
-
 app.get("/" , async (req, res) => {
     // initData();
     // await .deleteMany({});
     res.send("complete!!");
 });
 
-app.all("*", (req, res, next) => {
-    return next(new ExpressError(404, "Page not Found!!"));
-});
+// app.all("/{*any}", (req, res, next) => {
+//     return next(new ExpressError(404, "Page not Found!!"));
+// });
 
 app.use((err, req, res, next) => {
     let {status = 500, message = "something went wrong"} = err;

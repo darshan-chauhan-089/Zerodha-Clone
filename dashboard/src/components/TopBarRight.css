@@ -3,9 +3,9 @@
     height: 40px;
 }
 
-/* .topbar-right-container .menu-list ul{
-
-} */
+.topbar-right-container{
+    /* position: sticky; */
+}
 
 .topbar-right-container .spcific-link-container{
     display: none;

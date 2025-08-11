@@ -1,12 +1,15 @@
 import React, {useState} from 'react';
 import './TopBarRight.css';
 import { NavLink, Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 function TopBarRight() {
 
     const [selectedMenu, setSelectedMenu] = useState(0);
 
     const [ isProfileDDOpen, setIsProfileDDOpen ] = useState(false);
+
+    const {user} = useAuth();
 
     const handleMenuClick = (index) => {
         setSelectedMenu(index);
@@ -50,6 +53,11 @@ function TopBarRight() {
                         </NavLink>
                     </li>
                     <li className='px-3'>
+                        <NavLink to='trades' className={({isActive}) => `menu-Link  ${isActive ? activeMenuClass : menuClass}`}>
+                            <p >Trades</p>
+                        </NavLink>
+                    </li>
+                    <li className='px-3'>
                         <NavLink to='holdings' className={({isActive}) => `menu-Link  ${isActive ? activeMenuClass : menuClass}`}>
                             <p>Holdings</p>
                         </NavLink>
@@ -72,8 +80,11 @@ function TopBarRight() {
                     </li> */}
                 </ul>
                 <div className='profile-link d-flex align-self-center ms-auto' onClick={handleProfileClick}>
-                    <img className='mx-2' src='/media/userprofile_photo.png'></img>
-                    <p className='mb-0 username'>Demouser</p>
+                    <img className='mx-2 position-relative' style={{top: "3px"}} src='/media/userprofile_photo.png'></img>
+                    {/* <p className='mb-0 username'>{user.username}</p> */}
+                     <NavLink to='profile' className={({isActive}) => `menu-Link  ${isActive ? activeMenuClass : menuClass}`}>
+                        <p className='mb-0'>{user.username}</p>
+                    </NavLink>
                 </div>
             </div>
         </div>

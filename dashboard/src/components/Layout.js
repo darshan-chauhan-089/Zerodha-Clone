@@ -3,7 +3,8 @@ import TopBar from "./TopBar";
 
 function Layout() {
     return ( 
-        <div className="position-relative">
+        <div className="position-relative"
+        >
             <TopBar />
             <Outlet />
         </div>

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {Route, RouterProvider, Routes, createBrowserRouter, useParams} from "react-router-dom";
-import Home from './Home';
-import { AuthContextProvider } from '../context/AuthContext';
+import {Navigate, Route, RouterProvider, Routes, createBrowserRouter, useParams} from "react-router-dom";
 import ContextWrapper from './ContextWrapper';
 import Layout from './Layout';
 import Summary from './Summary';
@@ -10,7 +8,10 @@ import Orders from './Orders';
 import Holdings from './Holdings';
 import Positions from './Positions';
 import Funds from './Funds';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Trades from './Trades';
+import Profile from './Profile';
 function Apps() {
     // const [loading, setLoading] = useState(true);
     // const [authenticated, setAuthenticated] = useState(false);
@@ -42,7 +43,11 @@ function Apps() {
                     element: <Dashboard />,
                     children: [
                         {
-                            // index: true,
+                            index: true, // When no child path is provided
+                            // element: <Navigate to="dashboard" replace />
+                            element: <Navigate to='dashboard' replace />
+                        },
+                        {
                             path: 'dashboard',
                             element: <Summary />
                         },
@@ -61,6 +66,14 @@ function Apps() {
                         {
                             path: 'funds',
                             element: <Funds />
+                        },
+                        {
+                            path: 'trades',
+                            element: <Trades />
+                        },
+                        {
+                            path: 'profile',
+                            element: <Profile />
                         }
                     ]
                 },
@@ -70,7 +83,21 @@ function Apps() {
     ])
 
     return ( 
-        <RouterProvider router={router} />
+        <>
+            <RouterProvider router={router} />
+            <ToastContainer
+                position="top-right"
+                autoClose={1500}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
+        </>
     );
     // return ( 
     //     authenticated && 

@@ -1,15 +1,41 @@
 export const watchList = [
-  { name: 'INFY', price: 1555.45, percent: -1.6 },
-  { name: 'ONGC', price: 116.8, percent: -0.09 },
-  { name: 'TCS', price: 3194.8, percent: -0.25 },
-  { name: 'KPITTECH', price: 266.45, percent: 3.54 },
-  { name: 'QUICKHEAL', price: 308.55, percent: -0.15 },
-  { name: 'WIPRO', price: 577.75, percent: 0.32 },
-  { name: 'M&M', price: 779.8, percent: -0.01 },
-  { name: 'RELIANCE', price: 2112.4, percent: 1.44 },
-  { name: 'HUL', price: 512.4, percent: 1.04 }
+  { name: "TCS", price: 3785, dayOpenPrice: 3750, product: "CNC", percent: 0.93 },
+  { name: "INFY", price: 1520, dayOpenPrice: 1500, product: "MIS", percent: 1.33 },
+  { name: "RELIANCE", price: 2930, dayOpenPrice: 2950, product: "CNC", percent: -0.68 },
+  { name: "HDFCBANK", price: 1650, dayOpenPrice: 1620, product: "MIS", percent: 1.85 },
+  { name: "ICICIBANK", price: 960, dayOpenPrice: 970, product: "MIS", percent: -1.03 },
+  { name: "WIPRO", price: 490, dayOpenPrice: 485, product: "CNC", percent: 1.03 },
+  { name: "ITC", price: 450, dayOpenPrice: 455, product: "MIS", percent: -1.10 },
+  { name: "SBIN", price: 755, dayOpenPrice: 740, product: "CNC", percent: 2.03 },
+  { name: "ADANIENT", price: 3110, dayOpenPrice: 3095, product: "CNC", percent: 0.49 },
+  { name: "ADANIGREEN", price: 1230, dayOpenPrice: 1250, product: "MIS", percent: -1.60 },
+
+  { name: "LT", price: 3560, dayOpenPrice: 3500, product: "CNC", percent: 1.71 },
+  { name: "BAJFINANCE", price: 7270, dayOpenPrice: 7300, product: "MIS", percent: -0.41 },
+  { name: "MARUTI", price: 12200, dayOpenPrice: 12100, product: "CNC", percent: 0.83 },
+  { name: "ASIANPAINT", price: 3020, dayOpenPrice: 3050, product: "CNC", percent: -0.98 },
+  { name: "TITAN", price: 3750, dayOpenPrice: 3720, product: "MIS", percent: 0.81 },
+  { name: "NESTLEIND", price: 24300, dayOpenPrice: 24000, product: "CNC", percent: 1.25 },
+  { name: "HINDUNILVR", price: 2600, dayOpenPrice: 2620, product: "CNC", percent: -0.76 },
+  { name: "JSWSTEEL", price: 840, dayOpenPrice: 850, product: "MIS", percent: -1.18 },
+  { name: "COALINDIA", price: 405, dayOpenPrice: 400, product: "MIS", percent: 1.25 },
+  { name: "ONGC", price: 190, dayOpenPrice: 188, product: "CNC", percent: 1.06 },
+
+  { name: "BHARTIARTL", price: 1295, dayOpenPrice: 1300, product: "CNC", percent: -0.38 },
+  { name: "BPCL", price: 590, dayOpenPrice: 600, product: "MIS", percent: -1.67 },
+  { name: "POWERGRID", price: 275, dayOpenPrice: 270, product: "MIS", percent: 1.85 },
+  { name: "DRREDDY", price: 6350, dayOpenPrice: 6300, product: "CNC", percent: 0.79 },
+  { name: "HCLTECH", price: 1650, dayOpenPrice: 1625, product: "MIS", percent: 1.54 },
+  { name: "NTPC", price: 320, dayOpenPrice: 315, product: "MIS", percent: 1.59 },
+  { name: "INDUSINDBK", price: 1460, dayOpenPrice: 1440, product: "CNC", percent: 1.39 },
+  { name: "ULTRACEMCO", price: 9800, dayOpenPrice: 9850, product: "MIS", percent: -0.51 },
+  { name: "EICHERMOT", price: 3950, dayOpenPrice: 3900, product: "MIS", percent: 1.28 },
+  { name: "TATAPOWER", price: 425, dayOpenPrice: 420, product: "CNC", percent: 1.19 }
+
 ];
   
+
+
 // holdings
 export const holdings = [
   {
@@ -552,4 +578,3 @@ export const orders = [
     avg: 0
   }
 ];
-

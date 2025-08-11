@@ -1,11 +1,18 @@
 import axios from 'axios';
+import { useData } from '../context/DataContext';
+import { useAuth } from '../context/AuthContext';
 export const getStockUpDown = (param) => {
-    return param >= 0 ? "stock_up_color" : "stock_down_color";
+    return param === 0 || 0.0 ? "text-dark" : param > 0 ? "stock_up_color" : "stock_down_color";
 }
 
 export const search = (event, data, setData) => {
     const query = event.target.value.toUpperCase();
-    setData(data.filter((item) => item.name.includes(query)));
+    console.log("query: ", query);
+    let filteredData = data.filter((item) => item.name.includes(query));
+    if(filteredData.length === 0){
+        filteredData = ["searchEmpty"];
+    }
+    setData(filteredData);
 }
 
 export const handleSort = (columnKey, sortConfig, setSortConfing, data, setData) => {
@@ -76,3 +83,52 @@ export const verifyToken = async (token, setAuthenticated, setLoading) => {
         window.location.href = "http://localhost:3000/login";
     }
 }
+
+// export const placeOrder = async (itemInfo, stockQty) => {
+//     const {user} = useAuth();
+//     const {newOrder, setNewOrder} = useData();
+//      try{
+//         console.log("itemInfo in BuyActionWindow: ", itemInfo); 
+//         await axios.post(
+//             `http://localhost:8080/${user.id}/orders`,
+//             {
+//                 ...itemInfo,
+//                 qty: stockQty,  
+//                 time: new Date()
+//             }
+//         ).then((res) => {
+//             console.log("result", res.data);
+//             // generalContext.placeNewOrder({...itemInfo, updatedAt: Date.now()});
+//             setNewOrder({...itemInfo, updateAt: Date.now()})
+            
+//             // console.log("in BuyActionWindow: ", generalContext.newOrder);
+//             console.log("in BuyActionWindow: ", newOrder);
+//             showSuccess(`Buy order placed successfully for ${itemInfo.name}`);
+//         })
+
+//         handleCancleClick();
+//     }catch(err){
+//         console.log(err);
+//     }
+// }
+
+export const decideProfitOrLoss = (price, qty) => {
+    const POrL = Math.floor(Math.random() * 10) ; 
+
+    const percentage = parseFloat(Math.random().toFixed(2)); 
+    // console.log("percentage: ", percentage);
+    // return percentage of either profit or loss for 1 qty of selected stock 
+    
+    if(POrL >= 5){ // profit
+        return {
+            percentage: percentage, 
+            netPrice: (price + price*percentage) * qty
+        }
+    }else{
+        return {
+            percentage: -percentage, 
+            netPrice: (price + price*(-percentage)) * qty
+        };
+    }
+
+} 

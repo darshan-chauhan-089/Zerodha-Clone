@@ -1,0 +1,11 @@
+.item-buy-sell-action{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    background-color: rgba(231, 231, 231, 0.395) !important;
+}
+
+.item-buy-sell-action .action-btn{
+    /* z-index: 2; */
+}

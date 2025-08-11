@@ -16,25 +16,40 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Navbar from './landing_page/Navbar';
 import Footer from './landing_page/Footer';
 import { AuthContextProvider } from './context/AuthContext';
+import { ToastContainer } from 'react-toastify';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
-    <AuthContextProvider>
-      <Navbar />
-      <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/home' element={<HomePage />} />
-        <Route path='/about' element={<AboutPage />} />
-        <Route path='/products' element={<ProductPage />} />
-        <Route path='/pricing' element={<PricingPage />} />
-        <Route path='/support' element={<SupportPage />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/login' element={<Login />} />
-      </Routes>
-      <Footer />
-    </AuthContextProvider>
-  </BrowserRouter>
+  <>
+    <BrowserRouter>
+      <AuthContextProvider>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/home' element={<HomePage />} />
+          <Route path='/about' element={<AboutPage />} />
+          <Route path='/products' element={<ProductPage />} />
+          <Route path='/pricing' element={<PricingPage />} />
+          <Route path='/support' element={<SupportPage />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/login' element={<Login />} />
+        </Routes>
+        <Footer />
+      </AuthContextProvider>
+    </BrowserRouter>
+    <ToastContainer
+      position="top-right"
+      autoClose={1500}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick={false}
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+    />
+  </>
 );
 
 

@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-// import { positions } from '../data/data';
+// import { trades } from '../data/data';
 import TableHead from './TableHead';
 import axios from 'axios';
 import {getStockUpDown, search} from '../utilsFunc/utils';
@@ -9,68 +9,70 @@ import EmptyYet from './EmptyYet';
 import { useData } from '../context/DataContext';
 import ItemBuySellAction from './ItemBuySellAction';
 
-// let positionsData; 
+// let tradesData; 
 
-// export function getPositionsItem(itemId) {
+// export function gettradesItem(itemId) {
 //     let i = 0;
-//     while(i <= positionsData.length){
-//         if(positionsData[i].id === itemId){
-//             return positionsData[i];
+//     while(i <= tradesData.length){
+//         if(tradesData[i].id === itemId){
+//             return tradesData[i];
 //         }
 //         i++;
 //     }
 // }
 
-function Positions() {
+function Trades() {
 
     const [hoverRow, setHoverRow] = useState(null);
     
     const {user} = useAuth();
-    const {newOrder, setNewOrder, recentlySellOrder} = useData();
-    console.log("In Positions newOrder: ", newOrder);
-    const positions = useRef([]);
+    const {newOrder, recentlySellOrder, setNewOrderrecentlySellOrder} = useData();
+    const trades = useRef([]);
     const [tdata, setTData] = useState([]);
 
     // sorting 
     const [sortConfig, setSortConfing] = useState({key: null, direction: null});
 
     useEffect(() => {
-        // console.log("in positions: ", newOrder);
+        // console.log("in trades: ", newOrder);
         setTimeout(() => {
-            axios.get(`http://localhost:8080/${user.id}/positions`).then((res) => {
+            axios.get(`http://localhost:8080/${user.id}/trades`).then((res) => {
                 if(res.data.length === 0){
-                    positions.current = ["empty"];
+                    trades.current = ["empty"];
                     setTData(["empty"]);
                     return;
                 }
-                positions.current = res.data;
+                trades.current = res.data;
+                console.log("Trades Data", trades.current);
                 setTData(res.data);
             });
         }, 500);
-    }, [newOrder, recentlySellOrder]);
+    }, [recentlySellOrder]);
 
     // headnames    
-    let headNames = ["Product", "name", "Qty.", "Avg", "LTP", "P&L", "Chg."];
-    let keyNames = ["product", "name", "qty", "avg", "ltp", "pnl", "chg"];
+    let headNames = ["Trade ID", "Fill time", "Type", "instrument", "Product", "Qty.", "Net P/L"];
+    let keyNames = ["tradeId", "filltime", "type", "name", "product", "qty", "netProfitLoss"];
 
     // getProductStyle
     const getProductStyle = (product) => {
         const refObj = {
             CNC: "bg-danger-subtle text-danger",
             MIS: "bg-body-secondary text-secondary",
-            NRML: "bg-light-subtle text-dark"
+            NRML: "bg-light-subtle text-dark",
+            BUY: "bg-primary-subtle text-primary",
+            SELL: "bg-danger-subtle text-danger",
         }
         return refObj[product];
     }
     
 
     return ( 
-        <div className='positions-container' >
+        <div className='trades-container' >
             <div className='header d-flex justify-content-between border-bottom pb-4 pe-0 pe-sm-4 mb-5'>
-                <h2 className='fs-3 fs-md-4 fw-light mb-0 me-3 align-self-center'>Positions ({positions.current[0] === "empty" ? "0" : positions.current.length})</h2>
+                <h2 className='fs-3 fs-md-4 fw-light mb-0 me-3 align-self-center'>Trades ({trades.current[0] === "empty" ? "0" : trades.current.length})</h2>
                 <form class="d-flex" role="search">
                     <input id="search-input" class="form-control me-2" type="search" placeholder="Filter eg:INFY" aria-label="Search"
-                    onChange={(event) => search(event, positions.current, setTData)}
+                    onChange={(event) => search(event, trades.current, setTData)}
                     disabled={(tdata.length === 0 || tdata[0] === "empty")}/>   
                 </form>
             </div>
@@ -89,34 +91,30 @@ function Positions() {
                     </thead>
 
                     {
-                        positions.current.length === 0 
+                        trades.current.length === 0 
                         ? 
-                            <Loader></Loader> : positions.current[0] === "empty" ? <EmptyYet /> : 
+                            <Loader></Loader> : trades.current[0] === "empty" ? <EmptyYet /> : 
                         <tbody>
                             { 
                                 tdata[0] === "searchEmpty" ? <EmptyYet /> : tdata.map((item, index) => {
                                     return( <tr key={index} onMouseEnter={() => setHoverRow(index)} onMouseLeave={() => setHoverRow(null)}
                                         className='position-relative'>
+                                        <td className='table-data'>{item.tradeId}</td> 
+                                        <td className='table-data'>{item.filltime}</td> 
+                                        <td className={`table-data`}>
+                                            <span className={`px-3 py-1 rounded-1 ${getProductStyle(item.type.toUpperCase())}`}>
+                                                {item.type.toUpperCase()}
+                                            </span>
+                                        </td>
+                                        <td className='table-data'>{item.name}</td> 
                                         <td className={`table-data`}>
                                             <span className={`px-3 py-1 rounded-1 ${getProductStyle(item.product)}`}>
                                                 {item.product}
                                             </span>
                                         </td>
-                                        <td className='table-data'>{item.name}</td>
                                         <td className='table-data align-self-end'>{item.qty}</td>
-                                        <td className='table-data align-self-end'>{item.avg.toFixed(2)}</td>
-                                        <td className='table-data align-self-end'>{item.ltp.toFixed(2)}</td>
-                                        <td className={`table-data align-self-end 
-                                            ${getStockUpDown(item.pnl)}`}>
-                                                {item.pnl.toFixed(2)}</td>
-                                        <td className={`table-data align-self-end 
-                                            ${getStockUpDown(item.chg)}`}>
-                                                {item.chg.toFixed(2)}%</td>
-                                        <td className='table-data m-0 pt-2'
-                                            style={{padding: "0px"}}>
-                                                {hoverRow === index && <ItemBuySellAction 
-                                                style={{left: "100px", top: "8px"}}   
-                                                itemName={item.name} itemId={item._id} origin={"position"}/>}
+                                        <td className={`table-data align-self-end ${getStockUpDown(item.netProfitLoss)}`}>
+                                            {item.netProfitLoss === 0 || item.netProfitLoss < 0 ?  item.netProfitLoss : `+${item.netProfitLoss}`}
                                         </td>
                                     </tr>)
                                 })
@@ -130,4 +128,4 @@ function Positions() {
     );
 }
 
-export default Positions;
+export default Trades;

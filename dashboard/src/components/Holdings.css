@@ -11,6 +11,10 @@
     font-size: 1.05rem !important;
 }
 
+thead {
+    z-index: 6;
+}
+
 /* .holdings-container .table-container{
     height: 60vh !important;
 } */
