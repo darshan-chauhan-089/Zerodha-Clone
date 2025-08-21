@@ -21,6 +21,8 @@ const tradeSchema = new Schema({
     qty : Number,
     
     netProfitLoss: Number,
+
+    priceOfBuy: Number
 });
 
 module.exports.TradeModel = mongoose.model("Trade", tradeSchema);

@@ -8,6 +8,8 @@ const DataContext = new createContext();
 export const DataContextProvider = ({children, userIdFromUrl: userId}) => {
     
     const [data, setData] = useState({});
+    const [walletData, setWalletData] = useState({});
+    const [tradesData, setTradesData] = useState({});
     const ordersData = useRef([]);
     const openOrders = useRef([]);
     const [newOrder, setNewOrder] = useState(null);
@@ -32,6 +34,20 @@ export const DataContextProvider = ({children, userIdFromUrl: userId}) => {
                 }
             });
         });
+
+        axios.get(`http://localhost:8080/${userId}/wallet`).then((res) => {
+            setWalletData(res.data);
+            console.log("WalletData ", walletData);
+        });
+
+        axios.get(`http://localhost:8080/${userId}/trades`).then((res) => {
+            if(res.data.length === 0){
+                setTradesData(["empty"]);
+                return;
+            }
+            setTradesData(["non-empty"]);
+        });
+
         
     }, [newOrder, recentlySellOrder]);
     
@@ -62,7 +78,8 @@ export const DataContextProvider = ({children, userIdFromUrl: userId}) => {
 
     return (
         <DataContext.Provider value={{data, setData, newOrder, setNewOrder,
-         recentlySellOrder, setRecentlySellOrder, openOrders, getOrdersItem}}>
+         recentlySellOrder, setRecentlySellOrder, openOrders, getOrdersItem,
+         walletData, setWalletData, tradesData, setTradesData}}>
             {children}
         </DataContext.Provider>
     )

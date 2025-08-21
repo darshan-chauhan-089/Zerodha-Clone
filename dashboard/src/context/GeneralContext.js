@@ -13,6 +13,9 @@ export const GeneralContextProvider = (props) => {
     const [selectedStockUIDOffset, setselectedStockUIDOffset] = useState([]);
 
     const handleOpenBuyWindow = (itemInfo, topOffset) => {
+        // if(isSellWindowOpen){
+        //     handleCloseSellWindow();
+        // }
         setIsBuyWindowOpen(true);
         setselectedStockUIDOffset([itemInfo, topOffset]);
     }
@@ -23,6 +26,10 @@ export const GeneralContextProvider = (props) => {
     }
 
     const handleOpenSellWindow = (itemInfo, topOffset) => {
+        // if(isBuyWindowOpen){
+        //     console.log("under if BuyWindowOpen");
+        //     handleCloseBuyWindow();
+        // }
         setIsSellWindowOpen(true);
         setselectedStockUIDOffset([itemInfo, topOffset]);
     }
@@ -44,14 +51,13 @@ export const GeneralContextProvider = (props) => {
                 closeBuyWindow: handleCloseBuyWindow, 
                 openSellWindow: handleOpenSellWindow,
                 closeSellWindow: handleCloseSellWindow, 
-                // newOrder,
-                // placeNewOrder,
+                isBuyWindowOpen, isSellWindowOpen
             }}
         >
             {props.children}
             {
                 isBuyWindowOpen && <BuyActionWindow uid={selectedStockUIDOffset}/>
-            }
+            }   
             {
                 isSellWindowOpen && <SellActionWindow uid={selectedStockUIDOffset} />
             }

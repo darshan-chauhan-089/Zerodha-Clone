@@ -1,4 +1,5 @@
 const User = require("../models/userModel");
+const Wallet = require("../models/WalletModel");
 const {HoldingsModel} = require('../models/HoldingsModel');
 const {WatchListModel} = require('../models/WatchListModel');
 const {PositionsModel} = require('../models/PositionsModel');
@@ -13,6 +14,7 @@ exports.getProfile = async (req, res) => {
     const user = await User.findOne({slug: slug});
     res.status(200).json(user);
 }
+
 
 exports.showHoldings = async (req, res) => {
     const {userId: slug} = req.params;
@@ -41,6 +43,11 @@ exports.showWatchlists = async (req, res) => {
     res.status(200).json(await WatchListModel.find({}));
 }
 
+exports.getWallet = async (req, res) => {
+    const {userId: slug} = req.params;
+    const user = await User.findOne({slug: slug});
+    res.status(200).json(await Wallet.findOne({owner: user._id}));
+}
 exports.showPositions = async (req, res) => {
     const {userId: slug} = req.params;
     const user = await User.findOne({slug: slug});
@@ -65,10 +72,18 @@ exports.addStock = async (req, res) => {
     let stock = req.body;
     const {userId : slug} = req.params;
     const {_id} = await User.findOne({slug: slug}); 
-
+    
     let avg = stock.price * stock.qty / stock.qty;
     let total_pl = (stock.price - avg) * stock.qty; // the stock.price -> stock.currPrice from market
     let pnl = (stock.price - stock.dayOpenPrice) * stock.qty;
+
+    // wallet updation
+    const wallet = await Wallet.findOne({owner: _id});
+    let totalAmountSpent = stock.price * stock.qty;
+    wallet.totalAmountSpent += totalAmountSpent;
+    wallet.availableBalance -= totalAmountSpent;
+    const walletRes = await Wallet.findByIdAndUpdate(wallet._id, {...wallet});
+    console.log("walletRes: ", walletRes);
 
     let date = stock.date;
     console.log("date: ", date);
@@ -161,6 +176,13 @@ exports.deleteStock = async (req, res) => {
     order.status = "complete";
     await OrdersModel.findByIdAndUpdate(order._id, {...order});
 
+    const wallet = await Wallet.findOne({owner: order.owner});
+    wallet.availableBalance = wallet.availableBalance + ids.totalCreditedAmount;
+    wallet.totalAmountSpent = wallet.totalAmountSpent - order.qty*order.price;
+    wallet.netProfitLoss = wallet.netProfitLoss + ids.netPrice; // loss have (-) valus so it's solved with this equation
+    const walletRes = await Wallet.findByIdAndUpdate(wallet._id, {...wallet});
+    console.log("walletRes: ", walletRes);
+
     const trade = new TradeModel({
         owner: order.owner,
         
@@ -177,6 +199,8 @@ exports.deleteStock = async (req, res) => {
         qty : order.qty,
         
         netProfitLoss: ids.netPrice,
+
+        priceOfBuy: order.qty * order.price,
     });
 
     const savedTrade = await trade.save();

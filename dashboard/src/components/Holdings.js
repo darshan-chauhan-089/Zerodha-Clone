@@ -5,9 +5,12 @@ import Loader from './Loader';
 import axios from 'axios';
 import {getStockUpDown, search} from '../utilsFunc/utils';
 import { useData } from '../context/DataContext';
-import EmptyYet from './EmptyYet';
+// import EmptyYet from './EmptyYet';
+import { EmptyYet, EmptyYetMsg } from './EmptyYetComponent';
 import { useAuth } from '../context/AuthContext';
 import ItemBuySellAction from './ItemBuySellAction';
+import { DoughnutGraph } from './Graph';
+import { options } from './Graph';
 
 // let holdingsData; 
 
@@ -32,6 +35,7 @@ function Holdings() {
     const {newOrder, recentlySellOrder} = useData();
     console.log("In Holdings newOrder: ", newOrder);
     const [data, setData] = useState([]);
+    const holdings = useRef([]);
     console.log("In Holdings data: ", data);
 
     const [tdata, setTData] = useState([]);
@@ -43,10 +47,13 @@ function Holdings() {
             axios.get(`http://localhost:8080/${user.id}/holdings`).then((res) => {
             if(res.data.holdings.length === 0){
                 res.data.holdings = ["empty"];
+                holdings.current = ["empty"];
             }
             // holdingsData = res.data.holdings;
+            console.log("fetched holdingData: ", res.data);
             setData(res.data);
             setTData(res.data.holdings);
+            holdings.current = res.data.holdings;
         });
     }, [newOrder, recentlySellOrder]);
 
@@ -60,6 +67,70 @@ function Holdings() {
     // const totalCurrentValue = holdings.reduce((sum, item) => sum + (item.currVal), 0);
     // const totalProfitLoss = totalInvestment - totalCurrentValue;
     // const dayTotalPL = holdings.reduce((res, item) => res + ((item.price - item.dayOpenPrice) * item.qty), 0);
+
+    // dataForGraph
+    let labels = holdings.current?.map((item) => item.name);
+
+    const dataForGraph = {
+        labels,
+        datasets: [
+            {
+                label: 'Capital Allocation',
+                data: holdings.current?.map((item) => item.price * item.qty),
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                ],
+                borderWidth: 1,
+            },
+        ],
+    };
+
+    let options_1 = options;
+    options_1.plugins.title = 'Holdings(₹) Pie Chart';
+
+    const qtyDataForGraph = {
+        labels,
+        datasets: [
+            {
+                label: 'Qty.',
+                data: holdings.current?.map((item) => item.qty),
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                ],
+                borderWidth: 1,
+            },
+        ],
+    };
+
+    let options_2 = options;
+    options_2.plugins.title = 'Holdings(Qty.) Pie Chart';
+
 
     return ( 
         <div className='holdings-container'>
@@ -116,8 +187,8 @@ function Holdings() {
 
 
             </div>
-            <div className='table-container table-responsive'
-             style={{width: '100%', height: '60vh'}}>
+            <div className='table-container table-responsive position-relative mb-5 border-bottom pb-5'
+             style={{width: '100%', minHeight: '300px'}}>
                 <table class="table table-hover ">
                     <thead className='position-sticky top-0'>
                         <tr className='bg-white'>
@@ -136,7 +207,7 @@ function Holdings() {
                         <EmptyYet /> : 
                         <tbody>
                             { 
-                                tdata[0] === "searchEmpty" ? <EmptyYet /> : tdata?.map((item, index) => {
+                                tdata[0] === "searchEmpty" ? <EmptyYet /> : tdata.map((item, index) => {
 
                                     return( 
                                         <>
@@ -172,6 +243,28 @@ function Holdings() {
 
                 </table>
             </div>
+
+            <div className='chart-container d-flex justify-content-evenly flex-wrap position-relative' >
+                {
+                    holdings.current.length === 0 ? 
+                        <Loader></Loader> : holdings.current[0] === "empty" ?
+                        <EmptyYetMsg msg={"No holdings yet. Purchase a stock to unlock the chart."}/> : 
+                        <>
+                            <div className='align-self-center mb-4'>
+                                <p className='text-center text-muted'>Holdings(₹) Doughnut Chart</p>
+                                {/* <DoughnutGraph data={dataForGraph} title={"Holdings(Qty.) Pie Chart"}/> */}
+                                <DoughnutGraph data={dataForGraph}/>
+                            </div>
+                            <div className='vertical-border'></div>
+                            <div>
+                                <p className='text-center text-muted'>Holdings(Qty.) Doughnut Chart</p>
+                                {/* <DoughnutGraph data={qtyDataForGraph} title={'Holdings(₹) Pie Chart'}/> */}
+                                <DoughnutGraph data={qtyDataForGraph}/>
+                            </div>
+                        </>
+                }
+            </div>
+
         </div>
     );
 }

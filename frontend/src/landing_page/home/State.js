@@ -1,5 +1,8 @@
 import {Link} from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
+import { kiteRegisterAlert } from '../../utils/utils';
 function State() {
+    const {user} = useAuth();
     return ( 
         <div className='container mt-5 mb-5 py-4'>
             <div className='row'>
@@ -50,7 +53,8 @@ function State() {
                                 <i class="fa fa-long-arrow-right m-1" style={{position: "relative", top: "2px", opacity: "0.6"}}></i>
                         </Link>
                         <Link className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0
-                        link-underline-opacity-75-hover" to={'http://localhost:3001'}>
+                        link-underline-opacity-75-hover" to={`http://localhost:3001/${user?.id}`}
+                        onClick={(e) => kiteRegisterAlert(e, user)}>
                             Try Kite demo
                                 <i class="fa fa-long-arrow-right m-1" style={{position: "relative", top: "2px", opacity: "0.6"}}></i>
                         </Link>

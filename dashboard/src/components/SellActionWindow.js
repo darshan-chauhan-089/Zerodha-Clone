@@ -39,7 +39,8 @@ function SellActionWindow({uid}) {
                         id: itemInfo._id,
                         holding: itemInfo.holding,
                         position: itemInfo.position,
-                        netPrice: profit_loss      
+                        netPrice: profit_loss,   // net Profit or Loss
+                        totalCreditedAmount: uid[0].netPrice,
                     },
                 }
             ).then((res) => {

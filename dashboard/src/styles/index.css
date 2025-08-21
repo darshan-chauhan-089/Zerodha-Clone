@@ -81,7 +81,7 @@ code {
 
 .dashboard-container .content::-webkit-scrollbar{
   /* height: 100vh; */
-  width: 4px;
+  width: 10px;
 }
 .dashboard-container .content{
   min-width: calc(100% - 450px);
@@ -100,7 +100,8 @@ code {
   top: 50%;
   left: calc(100% - 60vw);
 }
-.empty-yet-container p{
+
+.empty-msg{
   font-weight: 400;
   font-size: 1.6rem;
   opacity: 0.4;
@@ -125,7 +126,38 @@ code {
   font-size: 0.7rem;
 }
 
+.chart-container
+ .vertical-border{
+  border: 0.1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* trades & holding chart img styling  */
+.graph-container .chart-option-container:hover{
+  backdrop-filter: blur(2px);
+}
+
+.graph-container .chart-option-msg{
+  font-size: 17px;
+  font-weight: 500;
+  /* animation: fadeout 3s ease-in-out forwards; */
+}
+
+/* @keyframes fadeOut {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+} */
 /* ------------------------- */
+
+@media screen and (max-width: 660px) {
+  .chart-container .vertical-border{
+    border: none;
+    display: none;
+  }
+}
 
 @media screen and (max-width: 1250px){
   .topbar-left-container{
@@ -137,12 +169,21 @@ code {
   .dashboard-container .content{
     min-width: 100%;
   }
+  .graph-container #trade-img{
+    width: 550px !important;
+  }
 }
 @media screen and (min-width: 1250px){
 
   /* NoDataYet component styling */
   .empty-yet-container{
     left: calc(100% - 40vw);
+  }
+}
+@media screen and (max-width: 580px){
+
+  .graph-container #trade-img{
+    width: 100% !important;
   }
 }
 

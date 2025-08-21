@@ -5,9 +5,11 @@ import axios from 'axios';
 import {getStockUpDown, search} from '../utilsFunc/utils';
 import Loader from './Loader';
 import { useAuth } from '../context/AuthContext';
-import EmptyYet from './EmptyYet';
+import { EmptyYet, EmptyYetMsg } from './EmptyYetComponent';
 import { useData } from '../context/DataContext';
 import ItemBuySellAction from './ItemBuySellAction';
+import { VerticalGraph } from './Graph';
+import { backdropClasses } from '@mui/material';
 
 // let tradesData; 
 
@@ -65,6 +67,39 @@ function Trades() {
         return refObj[product];
     }
     
+    
+            {/* export const data = {
+            labels,
+            datasets: [
+                {
+                label: 'Dataset 1',
+                data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                },
+                {
+                label: 'Dataset 2',
+                data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+                backgroundColor: 'rgba(53, 162, 235, 0.5)',
+                },
+            ],
+            }; */}
+
+        let labels = trades.current?.map((item) => item.name);
+        const dataForGraph = {
+            labels,
+            datasets: [
+                {
+                    label: 'Buying Amount',
+                    data: trades.current?.map((item) => item.priceOfBuy),
+                    backgroundColor: 'rgba(13,110,253, 0.5)',
+                },
+                {
+                    label: 'Selling Amount',
+                    data: trades.current?.map((item) => item.priceOfBuy + item.netProfitLoss),
+                    backgroundColor: 'rgba(220, 53, 69, 0.5)',
+                }
+            ]
+        }
 
     return ( 
         <div className='trades-container' >
@@ -76,8 +111,8 @@ function Trades() {
                     disabled={(tdata.length === 0 || tdata[0] === "empty")}/>   
                 </form>
             </div>
-            <div className='table-container table-responsive' style={{width: '100%', height: '70vh', position: 'relative'}}>
-                <table class="table table-hover">
+            <div className='table-container table-responsive mb-5 position-relative border-bottom' style={{width: '100%', minHeight: '200px'}}>
+                <table class="table table-hover ">
                     <thead className='position-sticky top-0'>
                         <tr className='bg-white'>
                             {
@@ -114,7 +149,7 @@ function Trades() {
                                         </td>
                                         <td className='table-data align-self-end'>{item.qty}</td>
                                         <td className={`table-data align-self-end ${getStockUpDown(item.netProfitLoss)}`}>
-                                            {item.netProfitLoss === 0 || item.netProfitLoss < 0 ?  item.netProfitLoss : `+${item.netProfitLoss}`}
+                                            {item.netProfitLoss === 0 || item.netProfitLoss < 0 ? item.netProfitLoss : `+${item.netProfitLoss}`}
                                         </td>
                                     </tr>)
                                 })
@@ -123,6 +158,18 @@ function Trades() {
                     }
 
                 </table>
+            </div>
+
+            
+            <div className='chart-container pt-5 position-relative'>
+            {
+                
+                trades.current.length === 0 ? 
+                    <Loader></Loader> : trades.current[0] === "empty" ?
+                    <EmptyYetMsg msg={"No trades yet. Make a trade(sell) to view this chart."}/> : 
+                            
+                    <VerticalGraph data={dataForGraph}/>
+                }
             </div>
         </div>
     );

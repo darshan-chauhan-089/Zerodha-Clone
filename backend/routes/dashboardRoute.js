@@ -21,6 +21,8 @@ router.get('/positions', wrapAsync(DashboardController.showPositions));
 
 router.get('/trades', wrapAsync(DashboardController.showTrades));
 
+router.get('/wallet', wrapAsync(DashboardController.getWallet));
+
 router
     .route('/orders')
     .get(wrapAsync(DashboardController.showOrders))

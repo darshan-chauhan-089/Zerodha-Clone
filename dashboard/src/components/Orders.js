@@ -5,7 +5,7 @@ import axios from 'axios';
 import { search } from '../utilsFunc/utils';
 import Loader from './Loader';
 import { useAuth } from '../context/AuthContext';
-import EmptyYet from './EmptyYet';
+import {EmptyYet} from './EmptyYetComponent';
 import { useData } from '../context/DataContext';
 import GeneralContext from '../context/GeneralContext';
 import ItemBuySellAction from './ItemBuySellAction';
@@ -107,7 +107,7 @@ function Orders() {
     return ( 
         <div className='orders-container' >
             <div className='open-order-container'>
-                <div className='header d-flex justify-content-between  pb-4 pe-0 pe-sm-4'>
+                <div className='header d-flex justify-content-between pb-4 pe-0 pe-sm-4'>
                     <h2 className='fs-3 fs-md-4 fw-light mb-0 me-3 align-self-center'>Open orders ({openOrders.current[0] === "empty" ? "0" : openOrders.current.length})</h2>
                     <form className="d-flex" role="search" >
                         <input id="search-input" className="form-control me-2" type="search" placeholder="Filter eg:INFY" aria-label="Search"

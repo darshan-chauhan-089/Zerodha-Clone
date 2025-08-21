@@ -5,7 +5,8 @@ import axios from 'axios';
 import {getStockUpDown, search} from '../utilsFunc/utils';
 import Loader from './Loader';
 import { useAuth } from '../context/AuthContext';
-import EmptyYet from './EmptyYet';
+// import EmptyYet from './EmptyYet';
+import { EmptyYet } from './EmptyYetComponent';
 import { useData } from '../context/DataContext';
 import ItemBuySellAction from './ItemBuySellAction';
 

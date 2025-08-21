@@ -1,5 +1,6 @@
 const { nanoid } = require('nanoid');
 const User = require('../models/userModel');
+const Wallet = require('../models/WalletModel');
 const { createSecretToken } = require('../utils/SecretToken');
 const bcrypt = require('bcrypt');
 
@@ -14,13 +15,21 @@ exports.signup = async (req, res, next) => {
 
     const slug = nanoid(12);
     const newUser = await User.create({email, password, username, slug, createdAt});
+    const wallet = await Wallet.create({
+        owner: newUser._id,
+        availableBalance: 10000000.0,
+        totalAmountSpent: 0.0,
+        netProfitLoss: 0.0
+    });
 
+    console.log("wallet: ", wallet); 
     const token = createSecretToken(newUser._id);
 
     res.cookie("token", token, {
         withCredentials: true, 
         httpOnly: false,
     });
+
 
     res.status(201)
     .json({ message: "User signed in successfully", success: true, newUser });

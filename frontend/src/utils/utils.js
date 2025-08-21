@@ -4,3 +4,10 @@ export const getCookie = (name) =>  {
   const found = cookies.find(row => row.startsWith(name + "="));
   return found ? found.split("=")[1] : null;
 }
+
+export const kiteRegisterAlert = (e, arg) => {
+  if(!arg){
+    e.preventDefault();
+    alert("Please register to explore Kite");
+  }
+} 

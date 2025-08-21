@@ -12,6 +12,9 @@ function ItemBuySellAction({style, itemName, itemId, origin}) {
 
     const handleBuyClick = () => {
         let itemInfo = getWatchListItem(itemName);
+        if(generalContext.isSellWindowOpen){
+             generalContext.closeSellWindow();
+        }
         generalContext.openBuyWindow(itemInfo);          
     }
     
@@ -25,6 +28,9 @@ function ItemBuySellAction({style, itemName, itemId, origin}) {
         let tradeData = decideProfitOrLoss(itemInfo.price, itemInfo.qty);
         console.log("tradeData: ", tradeData);
 
+        if(generalContext.isBuyWindowOpen){ 
+            generalContext.closeBuyWindow();
+        }
         generalContext.openSellWindow({...itemInfo, ...tradeData});
     }
 

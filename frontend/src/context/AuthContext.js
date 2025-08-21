@@ -13,7 +13,7 @@ const AuthContext = createContext({
 });
 
 export const AuthContextProvider = ({children}) => {
-    const demouser = "b3hytl0s-bpD";
+    // const demouser = "b3hytl0s-bpD";
     const navigate = useNavigate();
     const [user, setUser] = useState(null); //username
     const [token, setToken] = useState(() => getCookie("token"));
@@ -63,7 +63,7 @@ export const AuthContextProvider = ({children}) => {
     };
 
     return(
-        <AuthContext.Provider value={{user: user, token: token, login: login, logout: logout, demouser}}>
+        <AuthContext.Provider value={{user: user, token: token, login: login, logout: logout}}>
             {children}
         </AuthContext.Provider>
     )

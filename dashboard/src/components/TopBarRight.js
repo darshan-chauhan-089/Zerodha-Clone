@@ -67,17 +67,6 @@ function TopBarRight() {
                             <p >Positions</p>
                         </NavLink>
                     </li>
-                    <li className='px-3'>
-                        <NavLink to='funds' className={({isActive}) => `menu-Link  ${isActive ? activeMenuClass : menuClass}`}>
-                            <p >Funds</p>
-                        </NavLink>
-                    </li>
-                    
-                    {/* <li className='px-3'>
-                        <NavLink to='apps' className='menu-Link' onClick={ () => handleMenuClick(5) }>
-                            <p className= { selectedMenu === 5 ? activeMenuClass : menuClass }>Apps</p>
-                        </NavLink>
-                    </li> */}
                 </ul>
                 <div className='profile-link d-flex align-self-center ms-auto' onClick={handleProfileClick}>
                     <img className='mx-2 position-relative' style={{top: "3px"}} src='/media/userprofile_photo.png'></img>
