@@ -18,8 +18,8 @@ function HomePage() {
     return ( 
         <> 
             <Hero />
-            <Awards />
             <State />
+            <Awards />
             <Pricing />
             <Education />
             {

@@ -41,7 +41,7 @@ function State() {
                     </div>
                 </div>
                 <div className='col-12 col-lg-6 p-3 d-flex flex-column justify-content-evenly'>
-                    <Link to={'/products'}>
+                    <Link to={`http://localhost:3001/${user?.id}`} onClick={(e) => kiteRegisterAlert(e, user)}>
                         <img src='media/images/ecosystem.png'
                         style={{ width: "90%", margin:"0 auto"}}
                         className='align-self-center object-fit-contain'></img>

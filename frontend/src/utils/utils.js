@@ -8,6 +8,6 @@ export const getCookie = (name) =>  {
 export const kiteRegisterAlert = (e, arg) => {
   if(!arg){
     e.preventDefault();
-    alert("Please register to explore Kite");
+    alert("Please register/signup to explore Kite");
   }
 } 

@@ -1,5 +1,6 @@
 import {Link} from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { kiteRegisterAlert } from '../../utils/utils';
 
 function Hero() {
   const {user} = useAuth();
@@ -7,7 +8,9 @@ function Hero() {
       <div className={`container mb-5 mt-3 ${user ? "pb-4" : ""}`}>
         <div className='row text-center'>
             <div className='hero-img-container d-flex justify-content-center mb-4'>
-                <img className='' src='media/images/homeHero.png' alt='Hero_Image' style={{ width: "80%" }} ></img>
+                <Link className='' to={`http://localhost:3001/${user?.id}`} onClick={(e) => kiteRegisterAlert(e, user)}>
+                  <img className='' src='media/images/homeHero.png' alt='Hero_Image' style={{ width: "80%" }} ></img>
+                </Link>
             </div>
             <h1 className='mb-3'>Invest in everything</h1>
             <p className='mb-4'>Online platform to invest in stocks, derivatives, mutual funds, 
