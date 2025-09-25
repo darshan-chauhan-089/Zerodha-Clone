@@ -8,7 +8,7 @@ function CreateTicketParts({linkData, headingData, icon}){
                     <a className='link-underline text-dark fw-normal link-underline-opacity-0' 
                         href={headingData[1]}>
                         <h3 style={{fontSize: "1.2rem", fontWeight: "400"}}>
-                        <i class={icon} aria-hidden="true" style={{fontSize: "1rem"}}></i>
+                        <i className={icon} aria-hidden="true" style={{fontSize: "1rem"}}></i>
                             {headingData[0]}
                         </h3>
                     </a>

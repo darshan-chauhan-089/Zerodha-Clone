@@ -1,3 +1,4 @@
+import React from 'react';
 import {useState} from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -5,16 +6,13 @@ import { kiteRegisterAlert } from '../utils/utils';
 
 function Navbar() {
 
-    const [activeLink, setActiveLink] = useState(0);
-    console.log(activeLink);
-
-    const {user, logout} =  useAuth();
+    const {user} =  useAuth();
     return ( 
         <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top border border-bottom">
             <div className="container-fluid px-5 py-2">
 
                 <div className='d-flex justify-content-center align-items-center' style={{position: "relative" , right: "-60px"}}>
-                    <Link className="navbar-brand " to='/'><img className='' style={{width: "8rem" , position: "relative" , top: "-6px"}} src='media/images/logo.svg'></img></Link>
+                    <Link className="navbar-brand " to='/'><img className='' style={{width: "8rem" , position: "relative" , top: "-6px"}} src='media/images/logo.svg' alt=""></img></Link>
                 </div>
 
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -1,11 +1,10 @@
-import React from 'react';
-
 function Awards() {
     return ( 
         <div className='container mt-5 mb-5 py-4'>
             <div className='row'>
                 <div className='col-12 col-md-6 p-3 d-flex'>
                     <img src='media/images/largestBroker.svg'
+                    alt=""
                     style={{ width: "100%", margin:"0 auto"}}x
                     className='align-self-center'></img>
                 </div>
@@ -28,6 +27,7 @@ function Awards() {
                             </ul>
                         </div>
                         <img src='media/images/pressLogos.png'  
+                        alt=""
                         style={{ width: "80%" , marginLeft: "1rem"}}></img>
                     </div>
                 </div>

@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect } from 'react';
 import {useContext, createContext, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
@@ -54,7 +55,7 @@ export const AuthContextProvider = ({children}) => {
     };
 
     const logout = () => {
-        localStorage.removeItem("username");
+        if(localStorage.length) localStorage.removeItem("username");
         document.cookie = "token" + '=; Max-Age=0; path=/;';
         setToken(null);
         setUser(null);

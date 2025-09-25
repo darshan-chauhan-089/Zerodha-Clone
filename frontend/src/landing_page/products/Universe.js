@@ -28,7 +28,7 @@ function Universe(){
                 <div className="col-8 col-sm-5 col-md-4 col-lg-3 p-3 m-3 text-center">
                     <Link to="/products"
                     className="link-underline link-underline-opacity-0">
-                        <img className="mb-3" src="media/images/zerodhaFundhouse.png" style={{width: "200px", height: "55.5px"}}></img>
+                        <img className="mb-3" src="media/images/zerodhaFundhouse.png" alt="" style={{width: "200px", height: "55.5px"}}></img>
                         <p className='text-muted footer-description text-center ' >
                             Our asset management venture
                             that is creating simple and transparent index
@@ -39,7 +39,7 @@ function Universe(){
                 <div className="col-8 col-sm-5 col-md-4 col-lg-3 p-3 m-3 text-center">
                     <Link to="/products"
                      className="link-underline link-underline-opacity-0">
-                        <img className="mb-3" src="media/images/sensibullLogo.svg" style={{width: "200px", height: "55.5px"}}></img>
+                        <img className="mb-3" src="media/images/sensibullLogo.svg" alt="" style={{width: "200px", height: "55.5px"}}></img>
                         <p className='text-muted footer-description text-center ' >
                             Options trading platform that lets you
                             create strategies, analyze positions, and examine
@@ -51,7 +51,7 @@ function Universe(){
                 <div className="col-8 col-sm-5 col-md-4 col-lg-3 p-3 m-3 text-center">
                     <Link to="/products"
                     className="link-underline link-underline-opacity-0">
-                        <img className="mb-3" src="media/images/tijori.svg" style={{width: "200px", height: "55.5px"}}></img>
+                        <img className="mb-3" src="media/images/tijori.svg" alt="" style={{width: "200px", height: "55.5px"}}></img>
                         <p className='text-muted footer-description text-center ' >
                             Investment research platform
                             that offers detailed insights on stocks,
@@ -63,7 +63,7 @@ function Universe(){
                 <div className="col-8 col-sm-5 col-md-4 col-lg-3 p-3 m-3 text-center">
                     <Link to="/products"
                     className="link-underline link-underline-opacity-0">
-                        <img className="mb-3" src="media/images/streakLogo.png" style={{width: "200px", height: "55.5px"}}></img>
+                        <img className="mb-3" src="media/images/streakLogo.png" alt="" style={{width: "200px", height: "55.5px"}}></img>
                         <p className='text-muted footer-description text-center ' >
                             Systematic trading platform
                             that allows you to create and backtest
@@ -74,7 +74,7 @@ function Universe(){
                 <div className="col-8 col-sm-5 col-md-4 col-lg-3 p-3 m-3 text-center">
                     <Link to="/products"
                     className="link-underline link-underline-opacity-0">
-                        <img className="mb-3" src="media/images/smallcaseLogo.png" style={{width: "200px", height: "55.5px"}}></img>
+                        <img className="mb-3" src="media/images/smallcaseLogo.png" alt="" style={{width: "200px", height: "55.5px"}}></img>
                         <p className='text-muted footer-description text-center ' >
                             Thematic investing platform
                             that helps you invest in diversified
@@ -85,7 +85,7 @@ function Universe(){
                 <div className="col-8 col-sm-5 col-md-4 col-lg-3 p-3 m-3 text-center">
                     <Link to="/products"
                     className="link-underline link-underline-opacity-0">
-                        <img className="mb-3" src="media/images/dittoLogo.png" style={{width: "140px", height: "55.5px"}}></img>
+                        <img className="mb-3" src="media/images/dittoLogo.png" alt="" style={{width: "140px", height: "55.5px"}}></img>
                         <p className='text-muted footer-description text-center ' >
                             Personalized advice on life
                             and health insurance. No spam

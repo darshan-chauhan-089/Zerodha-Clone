@@ -1,11 +1,11 @@
 import {Link} from 'react-router-dom';
-
 function Education() {
     return ( 
         <div className='container mt-5 mb-5 py-5'>
             <div className='row'>
                 <div className='col-11 col-md-6 p-3 d-flex'>
                     <img src='media/images/education.svg'
+                    alt="Hero_Image"
                     style={{margin:"0 auto"}}x
                     className='w-75 w-lg-100 align-self-center'></img>
                 </div>
@@ -18,15 +18,15 @@ function Education() {
                     <Link className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0
                         link-underline-opacity-75-hover mb-3" to={'/'}>
                             Versity
-                            <i class="fa fa-long-arrow-right m-1" style={{position: "relative", top: "2px", color: "0d6efd", opacity: "0.6"}}></i>
+                            <i className="fa fa-long-arrow-right m-1" style={{position: "relative", top: "2px", color: "0d6efd", opacity: "0.6"}}></i>
                     </Link>
                     <p className='info-detail lh-base text-muted'>
                     TradingQ&A, the most active trading and investment community in India for all your market related queries.
                     </p>
                     <Link className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0
                         link-underline-opacity-75-hover" to={'https://tradingqna.com/'}>
-                            TredingQ&A
-                            <i class="fa fa-long-arrow-right m-1" style={{position: "relative", top: "2px", color: "0d6efd", opacity: "0.6"}}></i>
+                            TradingQ&A
+                            <i className="fa fa-long-arrow-right m-1" style={{position: "relative", top: "2px", color: "0d6efd", opacity: "0.6"}}></i>
                     </Link>
                 </div>
             </div>

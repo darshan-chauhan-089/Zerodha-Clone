@@ -12,7 +12,7 @@ function Pricing() {
                         link-underline-opacity-75-hover" 
                         to='/pricing'>
                             See pricing 
-                                <i class="fa fa-long-arrow-right m-1" style={{position: "relative", top: "2px", opacity: "0.6"}}></i>
+                                <i className="fa fa-long-arrow-right m-1" style={{position: "relative", top: "2px", opacity: "0.6"}}></i>
                     </Link>
                 </div>
                 

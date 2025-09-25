@@ -65,7 +65,7 @@ function Team(){
                             </li>
                             <li className='px-2'>
                                 <Link to="https://drive.google.com/file/d/15xLRzRmbqtatqPQ7vHxspVYrR-kgLICM/view?usp=sharing" >
-                                    <i class="fa fa-file-text fs-5 text-black text-muted" aria-hidden="true"></i>
+                                    <i className="fa fa-file-text fs-5 text-black text-muted" aria-hidden="true"></i>
                                 </Link>
                             </li>
                         </ul>   

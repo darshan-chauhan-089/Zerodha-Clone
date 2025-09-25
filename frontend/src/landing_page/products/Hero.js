@@ -10,7 +10,7 @@ function Hero(){
                 <h6 className="text-muted fs-6">Check out our
                 <Link className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0
                         link-underline-opacity-75-hover" to={'/products'}>  investment offerings
-                                <i class="fa fa-long-arrow-right m-1" style={{position: "relative", top: "2px", color: "0d6efd", opacity: "0.6"}}></i>
+                                <i className="fa fa-long-arrow-right m-1" style={{position: "relative", top: "2px", color: "0d6efd", opacity: "0.6"}}></i>
                 </Link>
                 </h6>
             </div>

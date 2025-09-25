@@ -17,6 +17,7 @@ function LeftSection(
                     <Link to={tryDemo ? tryDemo : "#"}
                     onClick={(e) => kiteRegisterAlert(e, tryDemo)}>
                         <img src={imageURL}
+                        alt=""
                         style={{ width: "100%", margin:"0 auto"}}x
                         className='align-self-center'></img>
                     </Link>
@@ -32,13 +33,13 @@ function LeftSection(
                                 link-underline-opacity-75-hover mb-3 text-nowrap" to={tryDemo ? tryDemo : "#"}
                                 onClick={(e) => kiteRegisterAlert(e, tryDemo)}> {/* remain for only kite */}
                                 Try demo
-                                <i class="fa fa-long-arrow-right m-1" style={{position: "relative", top: "2px", color: "0d6efd", opacity: "0.6"}}></i>
+                                <i className="fa fa-long-arrow-right m-1" style={{position: "relative", top: "2px", color: "0d6efd", opacity: "0.6"}}></i>
                             </Link>
                             <Link className="ms-5 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0
                             link-underline-opacity-75-hover mb-3 text-nowrap" to={tryDemo ? tryDemo : "#"}
                             onClick={(e) => kiteRegisterAlert(e, tryDemo)}>
                                 Learn more
-                                <i class="fa fa-long-arrow-right m-1" style={{position: "relative", top: "2px", color: "0d6efd", opacity: "0.6"}}></i>
+                                <i className="fa fa-long-arrow-right m-1" style={{position: "relative", top: "2px", color: "0d6efd", opacity: "0.6"}}></i>
                             </Link>
 
                         </div>

@@ -71,9 +71,9 @@ function Signup(){
             <div className="parent-div-form">
                 <h2>Sign Up</h2>
 
-                
-                <form onSubmit={handleSubmit}  className="needs-validation" novalidate>
-                    
+
+                <form onSubmit={handleSubmit}  className="needs-validation" noValidate>
+
                     <div className="mb-2">
                         <label htmlFor="email" className="form-label">Email</label>
                         <input type="email" className="form-control" id="email" name="email" 

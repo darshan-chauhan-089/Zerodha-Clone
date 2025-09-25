@@ -1,3 +1,4 @@
+import React from 'react';
 import {Link} from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
@@ -9,7 +10,7 @@ function Footer() {
 
                 <div className='col-0 col-sm-1'></div>
                 <div className='col-sm-12 col-md-3 mb-4'>
-                    <img className='mb-3' style={{width: "8rem" , position: "relative" , top: "-2px"}} src='media/images/logo.svg'></img>
+                    <img alt="" className='mb-3' style={{width: "8rem" , position: "relative" , top: "-2px"}} src='media/images/logo.svg'></img>
                     <p className='text-muted border-bottom pb-3'>
                     © 2010 - 2025, Zerodha Broking Ltd.<br />All rights reserved.
                     </p>

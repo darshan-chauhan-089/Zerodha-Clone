@@ -6,7 +6,7 @@ function RightSection(
         ProductName, 
         description,
         btn, 
-        btnUrl
+        // btnUrl
     }
 ){
     return(
@@ -23,7 +23,7 @@ function RightSection(
                             <Link className="me-3 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0
                             link-underline-opacity-75-hover mb-3 text-nowrap" to={"/products"}>
                                 {btn}
-                                <i class="fa fa-long-arrow-right m-1" 
+                                <i className="fa fa-long-arrow-right m-1" 
                                 style={{position: "relative", top: "2px", color: "0d6efd", opacity: "0.6"}}></i>
                             </Link>
                         </div>
@@ -35,6 +35,7 @@ function RightSection(
                 <div className='col-12 col-md-6 col-lg-5 p-3 d-flex'>
                     <Link to={"/products"}>
                         <img src={imageURL}
+                        alt=""
                         style={{ width: "100%", margin:"0 auto"}}x
                         className='align-self-center'></img>
                     </Link>

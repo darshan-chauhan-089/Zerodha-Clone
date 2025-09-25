@@ -35,7 +35,7 @@ function Login() {
                 { withCredentials: true }
             );
 
-            const {message, success, user} = data;
+            const {success, user} = data;
             if(success){
                 login(getCookie('token'), {username : user.username} );
                 showSuccess(`Welcome back, ${user.username}`);
@@ -73,7 +73,7 @@ function Login() {
                 <h2 className='pt-3 pb-4'>Login</h2>
 
                 
-                <form onSubmit={handleSubmit}  className="needs-validation" novalidate>
+                <form onSubmit={handleSubmit}  className="needs-validation" noValidate>
                     
                     <div className="mb-4 pt-3">
                         <label htmlFor="email" className="form-label fs-5">Email</label>
