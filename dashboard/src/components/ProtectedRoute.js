@@ -5,7 +5,7 @@ import Loader from './Loader';
 const ProtectedRoute = ({children}) => {
     const {user, token} = useAuth();
     if(!token){
-        window.location.href = "http://localhost:3000/login";
+        window.location.href = `${process.env.ZERODHA_CLONE}/login`;
     }
 
     return children;

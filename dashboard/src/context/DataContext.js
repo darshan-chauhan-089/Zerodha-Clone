@@ -14,16 +14,17 @@ export const DataContextProvider = ({children, userIdFromUrl: userId}) => {
     const openOrders = useRef([]);
     const [newOrder, setNewOrder] = useState(null);
     const [recentlySellOrder, setRecentlySellOrder] = useState(null);
+    const api_url = process.env.API_URL;
     
     useEffect(() => {
-        axios.get(`http://localhost:8080/${userId}/holdings`).then((res) => {
+        axios.get(`${api_url}/${userId}/holdings`).then((res) => {
             if(res.data.holdings.length === 0){
                 res.data.holdings = ["empty"];
             }
             setData(res.data);
         });
 
-        axios.get(`http://localhost:8080/${userId}/orders`).then((res) => {
+        axios.get(`${api_url}/${userId}/orders`).then((res) => {
             
             ordersData.current = res.data;
             // sturcturing the API data
@@ -35,12 +36,12 @@ export const DataContextProvider = ({children, userIdFromUrl: userId}) => {
             });
         });
 
-        axios.get(`http://localhost:8080/${userId}/wallet`).then((res) => {
+        axios.get(`${api_url}/${userId}/wallet`).then((res) => {
             setWalletData(res.data);
             console.log("WalletData ", walletData);
         });
 
-        axios.get(`http://localhost:8080/${userId}/trades`).then((res) => {
+        axios.get(`${api_url}/${userId}/trades`).then((res) => {
             if(res.data.length === 0){
                 setTradesData(["empty"]);
                 return;

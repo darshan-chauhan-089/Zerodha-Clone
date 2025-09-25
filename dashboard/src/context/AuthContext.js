@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from 'axios';
 
+
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({children, userIdFromUrl: userId}) => {
@@ -12,7 +13,7 @@ export const AuthContextProvider = ({children, userIdFromUrl: userId}) => {
             if(userId){
                 try{
                     const {data} = await axios.get(
-                        `http://localhost:8080/${userId}`, 
+                        `${process.env.API_URL}/${userId}`, 
                     );
 
                     const { status, user } = data;
@@ -35,7 +36,7 @@ export const AuthContextProvider = ({children, userIdFromUrl: userId}) => {
 
     const logout = () => {
         setUser(null);
-        window.location.href = "http://localhost:3000/login";
+        window.location.href = `${process.env.ZERODHA_CLONE}/login`;
     }
 
     return ( user ? <AuthContext.Provider value={{user, logout}}>

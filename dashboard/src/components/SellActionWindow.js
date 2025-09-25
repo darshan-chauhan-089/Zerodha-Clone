@@ -33,7 +33,7 @@ function SellActionWindow({uid}) {
         try{
             console.log("itemInfo in BuyActionWindow: ", itemInfo); 
             await axios.delete(
-                `http://localhost:8080/${user.id}`,
+                `${process.env.API_URL}/${user.id}`,
                 {
                     data: {
                         id: itemInfo._id,

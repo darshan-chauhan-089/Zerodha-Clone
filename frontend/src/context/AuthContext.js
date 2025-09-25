@@ -24,7 +24,7 @@ export const AuthContextProvider = ({children}) => {
             if(token){
                 try{
                     const { data } = await axios.get(
-                        "http://localhost:8080",
+                        "http://localhost:8080", //
                         {
                             headers: {
                                 Authorization: `Bearer ${token}`,

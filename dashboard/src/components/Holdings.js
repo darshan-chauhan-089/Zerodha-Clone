@@ -44,7 +44,7 @@ function Holdings() {
     const [sortConfig, setSortConfing] = useState({key: null, direction: null});
 
     useEffect(() => {
-            axios.get(`http://localhost:8080/${user.id}/holdings`).then((res) => {
+            axios.get(`${process.env.API_URL}/${user.id}/holdings`).then((res) => {
             if(res.data.holdings.length === 0){
                 res.data.holdings = ["empty"];
                 holdings.current = ["empty"];
