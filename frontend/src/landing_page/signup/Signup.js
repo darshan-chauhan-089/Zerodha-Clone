@@ -26,9 +26,10 @@ function Signup(){
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log(process.env.REACT_APP_API_URL);
         try{
             const { data } = await axios.post(
-                `${process.env.API_URL}/signup`,
+                `${process.env.REACT_APP_API_URL}/signup`,
                 {
                     ...inputVal
                 },

@@ -24,7 +24,7 @@ export const AuthContextProvider = ({children}) => {
             if(token){
                 try{
                     const { data } = await axios.get(
-                        process.env.API_URL, //
+                        process.env.REACT_APP_API_URL, //
                         {
                             headers: {
                                 Authorization: `Bearer ${token}`,
