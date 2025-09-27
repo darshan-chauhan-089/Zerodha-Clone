@@ -24,7 +24,7 @@ function Navbar() {
                     <ul className="navbar-nav ms-auto mb-lg-0">
 
                         <li className="nav-item py-1 px-3">
-                            <Link className={`nav-link pb-0`} onClick={(e) => kiteRegisterAlert(e, user)} to={`http://localhost:3001/${user?.id}`} ><p>Try Kite Demo</p></Link>
+                            <Link className={`nav-link pb-0`} onClick={(e) => kiteRegisterAlert(e, user)} to={`${process.env.REACT_APP_API_URL}/${user?.id}`} ><p>Try Kite Demo</p></Link>
                         </li>
                         {
                             user ? 

@@ -41,7 +41,7 @@ function State() {
                     </div>
                 </div>
                 <div className='col-12 col-lg-6 p-3 d-flex flex-column justify-content-evenly'>
-                    <Link to={`http://localhost:3001/${user?.id}`} onClick={(e) => kiteRegisterAlert(e, user)}>
+                    <Link to={`${process.env.REACT_APP_API_URL}/${user?.id}`} onClick={(e) => kiteRegisterAlert(e, user)}>
                         <img src='media/images/ecosystem.png'
                         alt=""
                         style={{ width: "90%", margin:"0 auto"}}
@@ -54,7 +54,7 @@ function State() {
                                 <i className="fa fa-long-arrow-right m-1" style={{position: "relative", top: "2px", opacity: "0.6"}}></i>
                         </Link>
                         <Link className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0
-                        link-underline-opacity-75-hover" to={`http://localhost:3001/${user?.id}`}
+                        link-underline-opacity-75-hover" to={`${process.env.REACT_APP_API_URL}/${user?.id}`}
                         onClick={(e) => kiteRegisterAlert(e, user)}>
                             Try Kite demo
                                 <i className="fa fa-long-arrow-right m-1" style={{position: "relative", top: "2px", opacity: "0.6"}}></i>

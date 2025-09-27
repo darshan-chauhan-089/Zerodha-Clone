@@ -19,7 +19,7 @@ function ProductPage(){
                 googlePlayStore="https://play.google.com/store/apps/details?id=com.zerodha.kite3"
                 appStore="https://apps.apple.com/in/app/zerodha-kite-trade-invest/id1449453802"
                 // tryDemo={'/'} // remain
-                tryDemo={ user ? `http://localhost:3001/${user.id}` : null} // remain
+                tryDemo={ user ? `${process.env.REACT_APP_API_URL}/${user.id}` : null} // remain
                 // tryDemo={`http://localhost:3001`} // remain
                 learnMore="https://zerodha.com/products/kite"
 
