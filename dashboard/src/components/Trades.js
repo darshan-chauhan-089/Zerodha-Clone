@@ -38,7 +38,7 @@ function Trades() {
     useEffect(() => {
         // console.log("in trades: ", newOrder);
         setTimeout(() => {
-            axios.get(`${process.env.API_URL}/${user.id}/trades`).then((res) => {
+            axios.get(`${process.env.REACT_APP_API_URL}/${user.id}/trades`).then((res) => {
                 if(res.data.length === 0){
                     trades.current = ["empty"];
                     setTData(["empty"]);

@@ -38,7 +38,7 @@ function Positions() {
     useEffect(() => {
         // console.log("in positions: ", newOrder);
         setTimeout(() => {
-            axios.get(`${process.env.API_URL}/${user.id}/positions`).then((res) => {
+            axios.get(`${process.env.REACT_APP_API_URL}/${user.id}/positions`).then((res) => {
                 if(res.data.length === 0){
                     positions.current = ["empty"];
                     setTData(["empty"]);

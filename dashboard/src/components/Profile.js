@@ -13,7 +13,7 @@ function Profile() {
     
 
     useEffect(() => {
-        axios.get(`${process.env.API_URL}/${user.id}/profile`).then((res) => {
+        axios.get(`${process.env.REACT_APP_API_URL}/${user.id}/profile`).then((res) => {
             console.log("userData", userData);
             setUserData(res.data);
         });

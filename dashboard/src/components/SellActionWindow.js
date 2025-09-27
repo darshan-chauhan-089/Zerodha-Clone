@@ -33,7 +33,7 @@ function SellActionWindow({uid}) {
         try{
             console.log("itemInfo in BuyActionWindow: ", itemInfo); 
             await axios.delete(
-                `${process.env.API_URL}/${user.id}`,
+                `${process.env.REACT_APP_API_URL}/${user.id}`,
                 {
                     data: {
                         id: itemInfo._id,

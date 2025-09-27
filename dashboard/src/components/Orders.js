@@ -38,7 +38,7 @@ function Orders() {
         setTimeout(() => {
             console.log("states !!");
             
-            axios.get(`${process.env.API_URL}/${user.id}/orders`).then((res) => {
+            axios.get(`${process.env.REACT_APP_API_URL}/${user.id}/orders`).then((res) => {
                 
                 if(res.data.length === 0){
                     console.log("in empty");

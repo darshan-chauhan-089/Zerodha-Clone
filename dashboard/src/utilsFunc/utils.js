@@ -62,7 +62,7 @@ export const verifyToken = async (token, setAuthenticated, setLoading) => {
     if(token){
         try{
             const {data} = await axios.get(
-                "http://localhost:8080", 
+                process.env.REACT_APP_API_URL,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -76,14 +76,14 @@ export const verifyToken = async (token, setAuthenticated, setLoading) => {
                 setAuthenticated(true);
                 setLoading(false);
             }else{                        
-                window.location.href = "http://localhost:3000/login";
+                window.location.href = `${process.env.REACT_APP_ZERODHA_CLONE}/login`;
             }
         }catch(err){
             console.error("Verifytoken error: " , err);
-            window.location.href = "http://localhost:3000/login";
+            window.location.href = `${process.env.REACT_APP_ZERODHA_CLONE}/login`;
         }
     }else{
-        window.location.href = "http://localhost:3000/login";
+        window.location.href = `${process.env.REACT_APP_ZERODHA_CLONE}/login`;
     }
 }
 

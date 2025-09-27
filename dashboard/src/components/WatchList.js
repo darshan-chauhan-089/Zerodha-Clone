@@ -34,7 +34,7 @@ function WatchList() {
 
     useEffect(() => {
         setTimeout(() => {
-            axios.get(`${process.env.API_URL}/${user.id}/watchlists`).then((res)=> {
+            axios.get(`${process.env.REACT_APP_API_URL}/${user.id}/watchlists`).then((res)=> {
                 watchlists.current = res.data;
                 data = res.data;
                 setWData(res.data);

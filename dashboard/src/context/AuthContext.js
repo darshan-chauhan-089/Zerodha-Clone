@@ -13,7 +13,7 @@ export const AuthContextProvider = ({children, userIdFromUrl: userId}) => {
             if(userId){
                 try{
                     const {data} = await axios.get(
-                        `${process.env.API_URL}/${userId}`, 
+                        `${process.env.REACT_APP_API_URL}/${userId}`, 
                     );
 
                     const { status, user } = data;

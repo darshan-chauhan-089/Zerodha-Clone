@@ -14,7 +14,7 @@ export const DataContextProvider = ({children, userIdFromUrl: userId}) => {
     const openOrders = useRef([]);
     const [newOrder, setNewOrder] = useState(null);
     const [recentlySellOrder, setRecentlySellOrder] = useState(null);
-    const api_url = process.env.API_URL;
+    const api_url = process.env.REACT_APP_API_URL;
     
     useEffect(() => {
         axios.get(`${api_url}/${userId}/holdings`).then((res) => {

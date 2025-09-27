@@ -27,7 +27,7 @@ function BuyActionWindow({uid}) {
         try{
             console.log("itemInfo in BuyActionWindow: ", itemInfo); 
             await axios.post(
-                `${process.env.API_URL}/${user.id}/orders`,
+                `${process.env.REACT_APP_API_URL}/${user.id}/orders`,
                 {
                     ...itemInfo,
                     qty: stockQty,  
