@@ -6,7 +6,7 @@ import { kiteRegisterAlert } from '../utils/utils';
 
 function Navbar() {
 
-    const {user} =  useAuth();
+    const {user, logout} =  useAuth();
     return ( 
         <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top border border-bottom">
             <div className="container-fluid px-5 py-2">
@@ -29,15 +29,16 @@ function Navbar() {
                         {
                             user ? 
                                 <li className="nav-item py-1 px-3">
-                                    {/* <Link className="nav-link pb-0" onClick={logout}>Logout</Link> */}
-                                    <NavLink to='logout' className={({isActive}) => `nav-link pb-0 ${isActive ? "text-primary": ""}`}>
+                                    <Link className="nav-link pb-0" onClick={logout}>Logout</Link>
+                                    {/* <NavLink to='logout'  className={({isActive}) => `nav-link pb-0 ${isActive ? "text-primary": ""}`}>
                                         <p className='mb-0 p-0'>Logout</p>
-                                    </NavLink>
-                                </li> :
+                                    </NavLink> */}
+                                </li> 
+                                :
                                 <>
                                     <li className="nav-item py-1 px-3">
                                         {/* <Link className={`nav-link pb-0 ${activeLink === 1 ? 'text-primary' : ""} `} onClick={() => setActiveLink(1)} to='/signup'>Signup</Link> */}
-                                        <NavLink to='signup' className={({isActive}) => `nav-link pb-0 ${isActive ? "text-primary": ""}`}>
+                                        <NavLink to='signup' onClick={(e) => logout()} className={({isActive}) => `nav-link pb-0 ${isActive ? "text-primary": ""}`}>
                                             <p className='mb-0 p-0'>Signup</p>
                                         </NavLink>
                                     </li> 
