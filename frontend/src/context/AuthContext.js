@@ -51,7 +51,7 @@ export const AuthContextProvider = ({children}) => {
     const login = (jwtToken, userData) => {
         localStorage.setItem("username", userData.username);
         setToken(jwtToken);
-        setUser(userData);
+        setUser({username: userData.username, id: userData.slug});
     };
 
     const logout = () => {
