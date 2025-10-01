@@ -22,6 +22,11 @@ jobs:
         with:
           submodules: true
           lfs: false
+      - name: Use Node.js 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20.x"
+          cache: "npm"
       - name: Debug env
         run: |
           echo "REACT_APP_API_URL=$REACT_APP_API_URL"
