@@ -18,6 +18,7 @@ export const AuthContextProvider = ({children}) => {
     const navigate = useNavigate();
     const [user, setUser] = useState(null); //username
     const [token, setToken] = useState(null);
+    console.log("AuthContextProvider mountig")
 
     useEffect(() => {
         const verifyToken = async () => {
