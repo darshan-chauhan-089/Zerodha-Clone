@@ -24,7 +24,7 @@ export const AuthContextProvider = ({children}) => {
             if(token){
                 try{
                     const { data } = await axios.get(
-                        process.env.REACT_APP_API_URL, //
+                        `${process.env.REACT_APP_API_URL}/verify`,
                         {
                             headers: {
                                 Authorization: `Bearer ${token}`,
@@ -33,12 +33,14 @@ export const AuthContextProvider = ({children}) => {
                     );
 
                     const {user, status} = data;
+                    console.log("Backend Response when verifying token: ", user, status);
                     if(status){
                         setUser({ username: user.username, id: user.slug });
                     }else{
                         setUser(null);
                     }
                 }catch(err){
+                    console.error("Token verification error: ", err.response?.data || err.message);
                     logout();
                 }
             }else{
@@ -70,5 +72,5 @@ export const AuthContextProvider = ({children}) => {
     )
 }
 
-// Hook to use anywhere in app
+// Hook to useanywhere in app
 export const useAuth = () => useContext(AuthContext);

@@ -6,7 +6,7 @@ const router = require('express').Router();
 
 router.post('/signup', wrapAsync(signup));
 router.post('/login', wrapAsync(login));
-router.get('/', wrapAsync(userVerification));
+router.get('/verify', wrapAsync(userVerification));
 
 // router.get('/:userId', userVerificationUserId);
 
