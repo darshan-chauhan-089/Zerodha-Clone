@@ -17,26 +17,30 @@ import Navbar from './landing_page/Navbar';
 import Footer from './landing_page/Footer';
 import { AuthContextProvider } from './context/AuthContext';
 import { ToastContainer } from 'react-toastify';
+import ErrorBoundary from './components/ErrorBoundary';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
-    <BrowserRouter>
-      <AuthContextProvider>
-        <Navbar />
-        <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/home' element={<HomePage />} />
-          <Route path='/about' element={<AboutPage />} />
-          <Route path='/products' element={<ProductPage />} />
-          <Route path='/pricing' element={<PricingPage />} />
-          <Route path='/support' element={<SupportPage />} />
-          <Route path='/signup' element={<Signup />} />
-          <Route path='/login' element={<Login />} />
-        </Routes>
-        <Footer />
-      </AuthContextProvider>
-    </BrowserRouter>
+    <ErrorBoundary>
+
+      <BrowserRouter>
+        <AuthContextProvider>
+          <Navbar />
+          <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/home' element={<HomePage />} />
+            <Route path='/about' element={<AboutPage />} />
+            <Route path='/products' element={<ProductPage />} />
+            <Route path='/pricing' element={<PricingPage />} />
+            <Route path='/support' element={<SupportPage />} />
+            <Route path='/signup' element={<Signup />} />
+            <Route path='/login' element={<Login />} />
+          </Routes>
+          <Footer />
+        </AuthContextProvider>
+      </BrowserRouter>
+    </ErrorBoundary>
     <ToastContainer
       position="top-right"
       autoClose={1500}
