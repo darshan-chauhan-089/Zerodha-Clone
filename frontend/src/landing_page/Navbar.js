@@ -1,12 +1,18 @@
 import React from 'react';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { kiteRegisterAlert } from '../utils/utils';
+import { getCookie, kiteRegisterAlert } from '../utils/utils';
 
 function Navbar() {
 
     const {user, logout} =  useAuth();
+    useEffect(() => {
+        console.log("Navbar mounted, user:", user);
+        console.log("Document cookies:", document.cookie);
+        console.log("getCookie result:", getCookie("token"));
+    }, [user]);
+
     return ( 
         <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top border border-bottom">
             <div className="container-fluid px-5 py-2">

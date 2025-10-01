@@ -38,7 +38,7 @@ function Login() {
 
             const {success, user} = data;
             if(success){
-                login(getCookie('token'), {username : user.username} );
+                login(getCookie('token'), {username : user.username, id: user.slug} );
                 showSuccess(`Welcome back, ${user.username}`);
                 setTimeout(() => {
                     navigate("/");

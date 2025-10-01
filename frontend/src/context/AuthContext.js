@@ -17,7 +17,7 @@ export const AuthContextProvider = ({children}) => {
     // const demouser = "b3hytl0s-bpD";
     const navigate = useNavigate();
     const [user, setUser] = useState(null); //username
-    const [token, setToken] = useState(() => getCookie("token"));
+    const [token, setToken] = useState(null);
 
     useEffect(() => {
         const verifyToken = async () => {
@@ -58,7 +58,7 @@ export const AuthContextProvider = ({children}) => {
     const login = (jwtToken, userData) => {
         localStorage.setItem("username", userData.username);
         setToken(jwtToken);
-        setUser({username: userData.username, id: userData.slug});
+        setUser({username: userData.username, id: userData.id});
     };
 
     const logout = () => {
