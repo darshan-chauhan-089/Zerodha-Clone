@@ -21,13 +21,16 @@ export const AuthContextProvider = ({children}) => {
 
     useEffect(() => {
         const verifyToken = async () => {
-            if(token){
+            const cookieToken = getCookie("token");
+            console.log("Fresh token from cookie: ", cookieToken);
+            if(cookieToken){
+                setToken(cookieToken)
                 try{
                     const { data } = await axios.get(
                         `${process.env.REACT_APP_API_URL}/verify`,
                         {
                             headers: {
-                                Authorization: `Bearer ${token}`,
+                                Authorization: `Bearer ${cookieToken}`,
                             },
                         },
                     );
@@ -44,6 +47,8 @@ export const AuthContextProvider = ({children}) => {
                     logout();
                 }
             }else{
+                console.log("No token found in cookies.");
+                setToken(null);
                 setUser(null);
             }
         }
