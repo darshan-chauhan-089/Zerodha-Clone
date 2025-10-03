@@ -1,11 +1,10 @@
+import React from 'react';
 import {Link} from 'react-router-dom';
 import { kiteRegisterAlert } from '../../utils/utils';
 function LeftSection(
     {
-        imageURL,
-        ProductName, 
-        description,
-        tryDemo
+        /* eslint-disable-next-line react/prop-types */
+        imageURL, ProductName, description, tryDemo
     }
 ){
     console.log("tryDemo: ", tryDemo)

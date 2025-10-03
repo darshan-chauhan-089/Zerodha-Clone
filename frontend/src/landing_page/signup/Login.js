@@ -26,9 +26,11 @@ function Login() {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
+        // eslint-disable-next-line no-undef
         console.log("API URL:", process.env.REACT_APP_API_URL);
         try{
             const {data} = await axios.post(
+                // eslint-disable-next-line no-undef
                 `${process.env.REACT_APP_API_URL}/login`,
                 {
                     ...inputVal
@@ -108,7 +110,7 @@ function Login() {
 
                     <span className ='text-center'>
                         <p className =''>
-                            Don't have an Account ?
+                            Don&apos;t have an Account ?
                             <Link to={"/signup"} className =' ms-2 link-underline link-underline-opacity-50 fw-semibold text-primary'>Sign Up</Link>
                         </p>
                     </span>

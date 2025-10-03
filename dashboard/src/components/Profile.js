@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import axios from "axios";
-import { getStockUpDown } from "../utilsFunc/utils";
-import { useData } from "../context/DataContext";
 import Wallet from "./Wallet";
 
 function Profile() {
@@ -22,7 +20,7 @@ function Profile() {
         //     console.log("walletData", walletData);
         //     setWalletData(res.data);
         // });
-    }, [])
+    }, [user.id])
 
     return ( 
         <div className="profile-container">
@@ -31,7 +29,7 @@ function Profile() {
                 <div className="align-self-start">
                     <p className='border-bottom fs-3 fs-md-4 fw-light pb-3 mb-4'>Profile</p>
                     <div className="header-info-container d-flex">
-                        <img className="" style={{borderRadius: '50%', width: '110px', height: '105px'}} src='/media/userprofile_photo.png' />
+                        <img alt='User Profile' className="" style={{borderRadius: '50%', width: '110px', height: '105px'}} src='/media/userprofile_photo.png' />
                         <p className=" fs-3 fs-md-4 align-self-center ms-5">{user.username}</p>
                     </div>
                 </div>

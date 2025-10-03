@@ -9,10 +9,11 @@ import { showSuccess } from '../utils/toast';
 const AuthContext = createContext({
     user: null,
     token : "",
-    login: (jwttoken, userData) => {},
+    login: () => {},
     logout: () => {}
 });
 
+// eslint-disable-next-line
 export const AuthContextProvider = ({children}) => {
     // const demouser = "b3hytl0s-bpD";
     const navigate = useNavigate();
@@ -77,6 +78,7 @@ export const AuthContextProvider = ({children}) => {
         </AuthContext.Provider>
     )
 }
+
 
 // Hook to useanywhere in app
 export const useAuth = () => useContext(AuthContext);

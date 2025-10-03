@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef, useContext} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 // import { positions } from '../data/data';
 import TableHead from './TableHead';
 import axios from 'axios';
@@ -7,7 +7,6 @@ import Loader from './Loader';
 import { useAuth } from '../context/AuthContext';
 import {EmptyYet} from './EmptyYetComponent';
 import { useData } from '../context/DataContext';
-import GeneralContext from '../context/GeneralContext';
 import ItemBuySellAction from './ItemBuySellAction';
 
 let openOrdersDataAPI = []; 
@@ -78,7 +77,7 @@ function Orders() {
 
             });
         }, 500);
-    }, [newOrder, recentlySellOrder]);
+    }, [newOrder, recentlySellOrder, user.id]);
         
 
     // headnames    

@@ -1,3 +1,4 @@
+import React from 'react';
 import {Link} from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { kiteRegisterAlert } from '../../utils/utils';
@@ -8,6 +9,7 @@ function Hero() {
       <div className={`container mb-5 mt-3 ${user ? "pb-4" : ""}`}>
         <div className='row text-center'>
             <div className='hero-img-container d-flex justify-content-center mb-4'>
+                {/* eslint-disable-next-line */}
                 <Link className='' to={`${process.env.REACT_APP_ZERODHA_DASHBOARD}/${user?.id}`} onClick={(e) => kiteRegisterAlert(e, user)}>
                   <img className='' src='media/images/homeHero.png' alt='Hero_Image' style={{ width: "80%" }} ></img>
                 </Link>

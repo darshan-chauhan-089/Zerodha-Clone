@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
+import {useEffect} from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { getCookie, kiteRegisterAlert } from '../utils/utils';
@@ -30,6 +30,7 @@ function Navbar() {
                     <ul className="navbar-nav ms-auto mb-lg-0">
 
                         <li className="nav-item py-1 px-3">
+                            {/*eslint-disable-next-line*/}
                             <Link className={`nav-link pb-0`} onClick={(e) => kiteRegisterAlert(e, user)} to={`${process.env.REACT_APP_ZERODHA_DASHBOARD}/${user?.id}`} ><p>Try Kite Demo</p></Link>
                         </li>
                         {
@@ -44,7 +45,7 @@ function Navbar() {
                                 <>
                                     <li className="nav-item py-1 px-3">
                                         {/* <Link className={`nav-link pb-0 ${activeLink === 1 ? 'text-primary' : ""} `} onClick={() => setActiveLink(1)} to='/signup'>Signup</Link> */}
-                                        <NavLink to='signup' onClick={(e) => logout()} className={({isActive}) => `nav-link pb-0 ${isActive ? "text-primary": ""}`}>
+                                        <NavLink to='signup' onClick={() => logout()} className={({isActive}) => `nav-link pb-0 ${isActive ? "text-primary": ""}`}>
                                             <p className='mb-0 p-0'>Signup</p>
                                         </NavLink>
                                     </li> 

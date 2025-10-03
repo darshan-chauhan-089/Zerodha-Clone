@@ -1,11 +1,10 @@
+import React from 'react';
 import {Link} from 'react-router-dom';
 
 function RightSection(
     {
-        imageURL,
-        ProductName, 
-        description,
-        btn, 
+        // eslint-disable-next-line react/prop-types
+        imageURL, ProductName, description, btn
         // btnUrl
     }
 ){

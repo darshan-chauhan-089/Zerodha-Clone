@@ -7,9 +7,7 @@ import Loader from './Loader';
 import { useAuth } from '../context/AuthContext';
 import { EmptyYet, EmptyYetMsg } from './EmptyYetComponent';
 import { useData } from '../context/DataContext';
-import ItemBuySellAction from './ItemBuySellAction';
 import { VerticalGraph } from './Graph';
-import { backdropClasses } from '@mui/material';
 
 // let tradesData; 
 
@@ -49,7 +47,7 @@ function Trades() {
                 setTData(res.data);
             });
         }, 500);
-    }, [recentlySellOrder]);
+    }, [recentlySellOrder, user.id]);
 
     // headnames    
     let headNames = ["Trade ID", "Fill time", "Type", "instrument", "Product", "Qty.", "Net P/L"];

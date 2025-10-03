@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import './BuyActionWindow.css';
 import GeneralContext from '../context/GeneralContext';
 import axios from 'axios';

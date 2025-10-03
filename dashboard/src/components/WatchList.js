@@ -40,7 +40,7 @@ function WatchList() {
                 setWData(res.data);
             });
         }, 500);
-    }, []); 
+    }, [user.id]); 
 
     return ( 
         <div className='watch-list-container d-inline border-end p-3 position-relative'>

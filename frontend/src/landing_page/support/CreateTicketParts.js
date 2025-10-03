@@ -1,3 +1,5 @@
+import React from 'react';
+// eslint-disable-next-line react/prop-types
 function CreateTicketParts({linkData, headingData, icon}){
     return(
         
@@ -13,6 +15,7 @@ function CreateTicketParts({linkData, headingData, icon}){
                         </h3>
                     </a>
                 </li>
+                {/* eslint-disable-next-line react/prop-types */}
                 {linkData.map(([title, url], index) => (
                     <li className='py-2 ps-4' key={index}>
                         <a className='sky-blue link-underline text-dark fw-normal link-underline-opacity-0' 

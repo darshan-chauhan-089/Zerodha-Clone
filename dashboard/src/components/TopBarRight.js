@@ -26,7 +26,7 @@ function TopBarRight() {
         bg-white'>
             <div className='logo'>
                 <Link to=''>
-                    <img className='kite-logo align-self-center' src='/media/kite-logo.svg' style={{width: '63px', height: '18px'}}></img>
+                    <img alt='Kite Logo' className='kite-logo align-self-center' src='/media/kite-logo.svg' style={{width: '63px', height: '18px'}}></img>
                 </Link>
             </div>
 
@@ -69,7 +69,7 @@ function TopBarRight() {
                     </li>
                 </ul>
                 <div className='profile-link d-flex align-self-center ms-auto' onClick={handleProfileClick}>
-                    <img className='mx-2 position-relative' style={{top: "3px"}} src='/media/userprofile_photo.png'></img>
+                    <img className='mx-2 position-relative' alt='User Profile' style={{top: "3px"}} src='/media/userprofile_photo.png'></img>
                     {/* <p className='mb-0 username'>{user.username}</p> */}
                      <NavLink to='profile' className={({isActive}) => `menu-Link  ${isActive ? activeMenuClass : menuClass}`}>
                         <p className='mb-0'>{user.username}</p>

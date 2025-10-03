@@ -1,6 +1,5 @@
 import React, {useState, createContext} from 'react';
 import BuyActionWindow from '../components/BuyActionWindow';
-import { useData } from './DataContext';
 import SellActionWindow from '../components/SellActionWindow';
 
 const GeneralContext = createContext();

@@ -1,3 +1,4 @@
+import React from 'react';
 import CreateTicketParts from "./CreateTicketParts";
 function CreateTicket(){
     return(

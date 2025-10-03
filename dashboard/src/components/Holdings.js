@@ -55,7 +55,7 @@ function Holdings() {
             setTData(res.data.holdings);
             holdings.current = res.data.holdings;
         });
-    }, [newOrder, recentlySellOrder]);
+    }, [newOrder, recentlySellOrder, user.id]);
 
     // headnames
     let headNames = ["Instruments", "Qty.", "Avg.cost", "LTP", "Cur. val", "P&L", "Net chg.", "Day chg."];

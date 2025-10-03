@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import PieChartOutlineIcon from '@mui/icons-material/PieChartOutline';
 import DataSaverOffIcon from '@mui/icons-material/DataSaverOff';
@@ -8,7 +8,7 @@ import { formatCompactNumber, getDisplayNone, getDisplayNoneInline, getStockUpDo
 import { useData } from '../context/DataContext';
 import { useAuth } from '../context/AuthContext';
 import Wallet from './Wallet'
-import {useNavigate, Link} from 'react-router-dom';
+import {useNavigate, } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
 function Summary() {
@@ -128,7 +128,7 @@ function Summary() {
                                 // style={{ top: "53%", left: "37%" }}> Explore</Link>
                         }
                     </div>
-                    <img src='.././media/chart_of_trades.png'
+                    <img src='.././media/chart_of_trades.png' alt='Trade Chart'
                     id='trade-img' style={{height: "290px" ,width: "420px", marginTop: '10px'}}>
                         
                     </img>
@@ -146,7 +146,7 @@ function Summary() {
                                 style={{top: "56%", left: '36%'}} onClick={() => navigate(`/${user.id}/holdings`)}>Explore</button>
                         }
                     </div>
-                    <img src='.././media/chart_of_holdings.png'
+                    <img src='.././media/chart_of_holdings.png' alt='Holdings Chart'
                         id='holding-img' 
                         className='' style={{height: '310px', width: '255px'}}>
                     </img>

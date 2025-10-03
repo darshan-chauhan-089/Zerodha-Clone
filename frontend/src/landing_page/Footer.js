@@ -231,7 +231,8 @@ function Footer() {
                 {/* <div className='col-0 col-sm-1'></div> */}
                 <div className='col-11'>
                     <p className='text-muted footer-description' >
-                        Zerodha Broking Ltd.: Member of NSE, BSE​ &​ MCX – SEBI Registration no.: INZ000031633 CDSL/NSDL: Depository 
+                        {/* eslint-disable-next-line*/}
+                        Zerodha Broking Ltd.: Member of NSE, BSE&nbsp;​&amp;​&nbsp;MCX – SEBI Registration no.: INZ000031633 CDSL/NSDL: Depository 
                         services through Zerodha Broking Ltd. – SEBI Registration no.: IN-DP-431-2019 Commodity Trading through 
                         Zerodha Commodities Pvt. Ltd. MCX: 46025; NSE-50001 – SEBI Registration no.: INZ000038238 Registered 
                         Address: Zerodha Broking Ltd., #153/154, 4th Cross, Dollars Colony, Opp. Clarence Public School, J.P 
@@ -258,15 +259,15 @@ function Footer() {
                           every month.
                     </p>
                     <p className='text-muted footer-description mb-3' >
-                        "Prevent unauthorised transactions in your account. Update your mobile numbers/email IDs with your 
+                        &quot;Prevent unauthorised transactions in your account. Update your mobile numbers/email IDs with your 
                         stock brokers. Receive information of your transactions directly from Exchange on your mobile/email 
                         at the end of the day. Issued in the interest of investors. KYC is one time exercise while dealing in 
                         securities markets - once KYC is done through a SEBI registered intermediary (broker, DP, Mutual Fund 
-                        etc.), you need not undergo the same process again when you approach another intermediary." 
+                        etc.), you need not undergo the same process again when you approach another intermediary.&quot; 
                         Dear Investor, if you are subscribing to an IPO, there is no need to issue a cheque. 
                         Please write the Bank account number and sign the IPO application form to authorize your bank to 
                         make payment in case of allotment. In case of non allotment the funds will remain in your bank account.
-                        As a business we don't give stock tips, and have not authorized anyone to trade on behalf of others.
+                        As a business we don&apos;t give stock tips, and have not authorized anyone to trade on behalf of others.
                         If you find anyone claiming to be part of Zerodha and offering such services, please create a ticket here.
                     </p>
 
@@ -309,7 +310,7 @@ function Footer() {
                         <li className='mb-2 list-inline-item'>
                             <Link
                              className='link-underline text-dark fw-normal link-underline-opacity-0 text-muted fs-10 px-3 mb-2'>
-                            For investor's attention</Link>
+                            For investor&apos;s attention</Link>
                         </li>
                         <li className='mb-2 list-inline-item'>
                             <Link

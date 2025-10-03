@@ -1,3 +1,4 @@
+import React from 'react';
 function Awards() {
     return ( 
         <div className='container mt-5 mb-5 py-4'>

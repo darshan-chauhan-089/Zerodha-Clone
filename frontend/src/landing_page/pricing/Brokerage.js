@@ -1,3 +1,4 @@
+import React from 'react';
 function Brokerage(){
     return(
         <div className='container py-2'>

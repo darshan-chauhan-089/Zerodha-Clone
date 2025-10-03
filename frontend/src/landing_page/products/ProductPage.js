@@ -1,3 +1,4 @@
+import React from 'react';
 import { useAuth } from "../../context/AuthContext";
 import Hero from "./Hero";
 import LeftSection from "./LeftSection";
@@ -19,6 +20,7 @@ function ProductPage(){
                 googlePlayStore="https://play.google.com/store/apps/details?id=com.zerodha.kite3"
                 appStore="https://apps.apple.com/in/app/zerodha-kite-trade-invest/id1449453802"
                 // tryDemo={'/'} // remain
+                /* eslint-disable-next-line no-undef */
                 tryDemo={ user ? `${process.env.REACT_APP_ZERODHA_DASHBOARD}/${user.id}` : null} // remain
                 // tryDemo={`http://localhost:3001`} // remain
                 learnMore="https://zerodha.com/products/kite"

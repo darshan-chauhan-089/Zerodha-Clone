@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { useData } from '../context/DataContext';
-import { useAuth } from '../context/AuthContext';
 export const getStockUpDown = (param) => {
     return param === 0 || 0.0 || 0.00 ? "text-dark" : param > 0 ? "stock_up_color" : "stock_down_color";
 }
