@@ -17,13 +17,12 @@ import Navbar from './landing_page/Navbar';
 import Footer from './landing_page/Footer';
 import { AuthContextProvider } from './context/AuthContext';
 import { ToastContainer } from 'react-toastify';
-import ErrorBoundary from './components/ErrorBoundary';
+import ErrorBoundary from './landing_page/ErrorBoundary';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
     <ErrorBoundary>
-
       <BrowserRouter>
         <AuthContextProvider>
           <Navbar />
