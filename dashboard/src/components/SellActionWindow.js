@@ -74,7 +74,7 @@ function SellActionWindow({uid}) {
                     <label for='price'>Price</label> 
                     <p className={`profit-loss-text ${getStockUpDown(uid[0].percentage)}`}
                     >{profit_loss_sign}
-                        <p className=''>({uid[0].percentage})</p>
+                        <p className=''>({uid[0].percentage * 100}%)</p>
                     </p>
                 </div>
                 <div className='d-flex flex-column'>

@@ -45,7 +45,7 @@ function Navbar() {
                                 <>
                                     <li className="nav-item py-1 px-3">
                                         {/* <Link className={`nav-link pb-0 ${activeLink === 1 ? 'text-primary' : ""} `} onClick={() => setActiveLink(1)} to='/signup'>Signup</Link> */}
-                                        <NavLink to='signup' onClick={() => logout()} className={({isActive}) => `nav-link pb-0 ${isActive ? "text-primary": ""}`}>
+                                        <NavLink to='signup' className={({isActive}) => `nav-link pb-0 ${isActive ? "text-primary": ""}`}>
                                             <p className='mb-0 p-0'>Signup</p>
                                         </NavLink>
                                     </li> 
