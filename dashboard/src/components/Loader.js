@@ -1,7 +1,7 @@
 import React from 'react';
-function Loader() {
+function Loader({size}) {
     return ( 
-        <div className='loader-container'>
+        <div className='loader-container' style={{width: "50%", height: size}}>
             <div className="loader"></div>
         </div>
      );

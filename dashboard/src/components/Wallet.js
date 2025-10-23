@@ -10,7 +10,7 @@ function Wallet() {
             style={{width: "100%"}}> 
                 <div className="row mb-1">
                     <div className="col p-0">Granted</div>
-                    <div className={`col p-0 ${getStockUpDown(1)}`}>: 10000000(1Cr)</div>
+                    <div className={`col p-0 ${getStockUpDown(1)}`}><span className="text-black">:</span> 10000000(1Cr)</div>
                 </div>
                 <div className="row mb-1">
                     <div className="col p-0">Available Balance</div>
@@ -22,7 +22,7 @@ function Wallet() {
                 </div>
                 <div className="row mb-1">
                     <div className="col p-0">Net Profit/Loss</div>
-                    <div className={`col p-0 ${getStockUpDown(walletData?.netProfitLoss)}`}>: {walletData?.netProfitLoss?.toFixed(2)}</div>
+                    <div className={`col p-0 ${getStockUpDown(walletData?.netProfitLoss)}`}><span className="text-black">:</span> {walletData?.netProfitLoss?.toFixed(2)}</div>
                 </div>
             </div>
             {/* <ul className="list-unstyled mx-3 my-0">

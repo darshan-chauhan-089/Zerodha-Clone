@@ -147,42 +147,63 @@ function Holdings() {
 
                 <div className='total-investment-wrapper mx-3 mb-3' >
                     <p className='title-smaller mb-1'>Total investment</p>
-                    <p className='total-investment '>
-                        {Math.floor(data?.holdingsTotalData?.totalInvestment).toLocaleString('en-US')}
+                    {
+                        data?.holdingsTotalData === undefined ?
+                        <p>Loading...</p>
+                        : 
+                        <p className='total-investment '>
+                            {Math.floor(data?.holdingsTotalData?.totalInvestment).toLocaleString('en-US')}
                             <span className='total-franctional-part'>
                                 {(data?.holdingsTotalData?.totalInvestment % 1).toFixed(2).toString().slice(1)}
-                            </span>
-                    </p>
+                            </span> 
+                        </p>
+                        
+                    }
                 </div>
 
                 <div className='total-investment-wrapper mx-3 mb-3' >
                     <p className='title-smaller mb-1'>Current Value</p>
-                    <p className='total-investment '>
-                        {Math.floor(data?.holdingsTotalData?.totalCurrentValue).toLocaleString('en-US')}
-                            <span className='total-franctional-part'>
-                                {(data?.holdingsTotalData?.totalCurrentValue % 1).toFixed(2).toString().slice(1)}
-                            </span>
-                    </p>
+                    {
+                        data?.holdingsTotalData === undefined ?
+                        <p>Loading...</p>
+                        : 
+                        <p className='total-investment '>
+                            {Math.floor(data?.holdingsTotalData?.totalCurrentValue).toLocaleString('en-US')}
+                                <span className='total-franctional-part'>
+                                    {(data?.holdingsTotalData?.totalCurrentValue % 1).toFixed(2).toString().slice(1)}
+                                </span>
+                        </p>
+                    }
                 </div>
 
                 <div className='total-investment-wrapper mx-3 mb-3' >
                     <p className='title-smaller mb-1'>Day's P&L</p>
-                    <p className={`total-investment ${getStockUpDown(data?.holdingsTotalData?.dayTotalPL)}`}>
+                    {
+                        data?.holdingsTotalData === undefined ?
+                        <p>Loading...</p>
+                        : 
+                        <p className={`total-investment ${getStockUpDown(data?.holdingsTotalData?.dayTotalPL)}`}>
                          {Math.floor(data?.holdingsTotalData?.dayTotalPL).toLocaleString('en-US')}
                             <span className='total-franctional-part'>
                                 {(Math.floor(data?.holdingsTotalData?.dayTotalPL) % 1).toFixed(2).toString().slice(1)}
                             </span>
-                    </p>
+                        </p>
+                    }
                 </div>
 
                 <div className='total-investment-wrapper mx-3 mb-3' >
                     <p className='title-smaller mb-1'>Total P&L</p>
-                    <p className={`total-investment ${getStockUpDown(data?.holdingsTotalData?.totalProfitLoss)}`}>
-                         {Math.floor(data?.holdingsTotalData?.totalProfitLoss).toLocaleString('en-US')}
-                            <span className='total-franctional-part'>
-                                {(Math.floor(data?.holdingsTotalData?.totalProfitLoss) % 1).toFixed(2).toString().slice(1)}
-                            </span>
-                    </p>
+                    {
+                        data?.holdingsTotalData === undefined ?
+                        <p>Loading...</p>
+                        : 
+                        <p className={`total-investment ${getStockUpDown(data?.holdingsTotalData?.totalProfitLoss)}`}>
+                            {Math.floor(data?.holdingsTotalData?.totalProfitLoss).toLocaleString('en-US')}
+                                <span className='total-franctional-part'>
+                                    {(Math.floor(data?.holdingsTotalData?.totalProfitLoss) % 1).toFixed(2).toString().slice(1)}
+                                </span>
+                        </p>
+                    }
                 </div>
 
 

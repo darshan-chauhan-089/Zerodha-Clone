@@ -7,11 +7,11 @@ function TopBarLeft() {
         >
             <div className='intrument-widget'>
                 <p className='pinned-funds-name mb-0 color_444 font_size_85'>NIFTY 50</p>
-                <p className='last-price-down mb-0 stock_down_color'><small>4343.45</small></p>
+                <p className='last-price-down mb-0 stock_down_color'><small>18181.75</small></p>
             </div>
             <div className='intrument-widget'>
-                <p className='pinned-funds-name mb-0 color_444 font_size_85'>NIFTY 50</p>
-                <p className='last-price-down mb-0 stock_down_color'><small>4343.45</small></p>
+                <p className='pinned-funds-name mb-0 color_444 font_size_85'>SENSEX</p>
+                <p className='last-price-down mb-0 stock_down_color'><small>61569.64</small></p>
             </div>
         </div>
      );
