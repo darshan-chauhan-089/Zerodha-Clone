@@ -16,6 +16,7 @@ function SellActionWindow({uid}) {
     const{recentlySellOrder ,setRecentlySellOrder} = useData();
 
     let profit_loss = 0;
+    // uid[0].percentage = uid[0].percentage?.toFixed(2);
     if(uid[0].percentage < 0){
         profit_loss = parseInt(-(uid[0].qty*uid[0].price - uid[0].netPrice));
     }else{
@@ -74,7 +75,8 @@ function SellActionWindow({uid}) {
                     <label for='price'>Price</label> 
                     <p className={`profit-loss-text ${getStockUpDown(uid[0].percentage)}`}
                     >{profit_loss_sign}
-                        <p className=''>({uid[0].percentage * 100}%)</p>
+                    {console.log("value: ", parseFloat(uid[0].percentage).toFixed(2))}
+                        <p className=''>({(uid[0].percentage * 100).toFixed(0)}%)</p>
                     </p>
                 </div>
                 <div className='d-flex flex-column'>

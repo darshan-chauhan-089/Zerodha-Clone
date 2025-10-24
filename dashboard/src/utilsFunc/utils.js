@@ -116,8 +116,8 @@ export const verifyToken = async (token, setAuthenticated, setLoading) => {
 export const decideProfitOrLoss = (price, qty) => {
     const POrL = Math.floor(Math.random() * 10); 
 
-    const percentage = parseFloat(Math.random().toFixed(2)); 
-    // console.log("percentage: ", percentage);
+    const percentage = parseFloat(Math.random().toFixed(2));
+    console.log("percentage: ", percentage);
     // return percentage of either profit or loss for 1 qty of selected stock 
     
     if(POrL >= 5){ // profit
