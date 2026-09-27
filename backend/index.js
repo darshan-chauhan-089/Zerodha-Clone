@@ -26,6 +26,7 @@ const cors = require('cors');
 const mongoose = require("mongoose");
 
 mongoose.connect(uri, {
+    dbName: "zerodha",
     useNewUrlParser: true, 
     useUnifiedTopology: true,  
 })

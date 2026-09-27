@@ -36,7 +36,7 @@ export const AuthContextProvider = ({children, userIdFromUrl: userId}) => {
 
     const logout = () => {
         setUser(null);
-        window.location.href = `${process.env.ZERODHA_CLONE}/login`;
+        window.location.href = `${process.env.REACT_APP_ZERODHA_CLONE}/login`;
     }
 
     return ( user ? <AuthContext.Provider value={{user, logout}}>

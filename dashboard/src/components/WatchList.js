@@ -40,6 +40,7 @@ function WatchList() {
                 setWData(res.data);
             });
         }, 500);
+        console.log("WatchLists: ", data);
     }, [user.id]); 
 
     return ( 

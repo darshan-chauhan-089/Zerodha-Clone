@@ -10,4 +10,4 @@ router.get('/verify', wrapAsync(userVerification));
 
 // router.get('/:userId', userVerificationUserId);
 
-module.exports = router;
+module.exports = router;    

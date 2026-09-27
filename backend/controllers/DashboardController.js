@@ -40,6 +40,7 @@ exports.showHoldings = async (req, res) => {
 
 
 exports.showWatchlists = async (req, res) => {
+    console.log("UserName: ", req.body);
     res.status(200).json(await WatchListModel.find({}));
 }
 

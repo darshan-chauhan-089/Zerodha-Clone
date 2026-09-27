@@ -15,6 +15,7 @@ import { VerticalGraph } from './Graph';
 //     let i = 0;
 //     while(i <= tradesData.length){
 //         if(tradesData[i].id === itemId){
+
 //             return tradesData[i];
 //         }
 //         i++;
