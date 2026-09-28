@@ -66,6 +66,6 @@ exports.login = async (req, res, next) => {
         user: user },
     );
 
-    console.log(user.username, "logged in.");
+    console.log(user.username, "successfully logged in.");
     next();
 }
